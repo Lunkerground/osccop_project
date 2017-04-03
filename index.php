@@ -7,5 +7,6 @@
   <body>
     <p>Bonjour</p>
     <p>Ceci est un test pour le merge, ouaish tavu OKLM sans pression</p>
+    <strong> Je vous emmerde et je rentre à ma maison!</strong>
   </body>
 </html>
