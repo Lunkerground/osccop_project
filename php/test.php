@@ -1,5 +1,5 @@
 <?php
 
-    echo "Je suis un test";
+    include_once('connexion.php');
 
  ?>
