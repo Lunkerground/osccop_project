@@ -8,7 +8,8 @@ $(document).ready(function() {
                 method: "POST",
                 url: "gamesearch.php",
                 data: {
-                    game: inputValue
+                    game: inputValue,
+                    typeOfSearch: $("select[name=typeOfSearch]").val()
                 },
                 datatype: "json",
                 success: (data) => {
@@ -21,7 +22,6 @@ $(document).ready(function() {
                     $('a.selectGame').click(function() {
                         let gIndex = $(".game").index($(this).parents());
                         let gId = $(this).parents().attr("id").substr(1);
-                        console.log(gId);
                         //vérfie si le jeu fait déjà parti de la sélection
                         let alreadySelected = false;
                         $(".choosengame .game").each(function() {

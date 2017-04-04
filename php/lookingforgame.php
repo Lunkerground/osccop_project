@@ -23,6 +23,13 @@
             <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
           </div>
         </div>
+        <div class="col-sm-4">
+          <label for="typeOfSearch">Recherche par:</label>
+            <select class="typeOfSearch" name="typeOfSearch">
+              <option value="jeu">Jeu</option>
+              <option value="console">Console</option>
+            </select>
+        </div>
       </div>
       <div class="row">
         <div id="gamelist" class="col-md-3 col-sm-6"></div>
