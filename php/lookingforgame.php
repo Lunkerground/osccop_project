@@ -15,17 +15,21 @@
     <![endif]-->
   </head>
   <body>
-    <div class="col-sm-4">
-
-      <div class="input-group">
-        <span class="input-group-addon">Recherche de jeu</span>
-        <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
-      </div>
-    </div>
+    <div class="container">
       <div class="row">
-        <div id="gamelist" class="col-md-3"></div>
-        <div class="choosengame col-md-3"></div>
+        <div class="col-sm-4">
+          <div class="input-group">
+            <span class="input-group-addon">Recherche de jeu</span>
+            <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
+          </div>
+        </div>
       </div>
+      <div class="row">
+        <div id="gamelist" class="col-md-3 col-sm-6"></div>
+        <div class="choosengame col-md-3 col-sm-6"></div>
+      </div>
+      <button type="button" name="button">Envoyer</button>
+    </div>
 
 
 
@@ -33,6 +37,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="../js/jeu.js"></script>
+    <script src="jeu.js"></script>
   </body>
 </html>
