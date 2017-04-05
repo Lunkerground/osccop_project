@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+
     <meta charset="utf-8">
-    <title>OSCCOP</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OSCCOP - Accueil</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/convert/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
   </head>
   <body>
-    <div>
-      <p>Bonjour</p>
-      <p>Ceci est un test pour le merge, ouaish tavu OKLM sans pression</p>
-      <strong> Je vous emmerde et je rentre à ma maison!</strong>
-    </div>
+
+    <?php
+
+      include('pages/components/navbar.php');
+
+    ?>
+
+    <!-- <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 banner">
+          <img src="images/banner.jpg" alt="Bannière" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 jaune">
+
+        </div>
+        <div class="col-xs-6 bleu">
+
+        </div>
+      </div>
+    </div> -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
   </body>
 </html>

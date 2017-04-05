@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,KAAK;EACH,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,IAAI;EACZ,SAAG;IACD,MAAM,EAAE,IAAI;IACZ,KAAK,EAAE,IAAI",
+"sources": ["../components/navbar.sass"],
 "names": [],
 "file": "navbar.css"
 }

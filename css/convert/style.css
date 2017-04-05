@@ -1,6 +1,23 @@
-div {
-  height: 200px;
-  width: 200px;
-  background-color: #123123; }
+.logo {
+  position: absolute;
+  margin: auto; }
+  .logo img {
+    height: 100%;
+    width: auto; }
+
+.banner {
+  height: 250px; }
+  .banner img {
+    margin: 0 auto;
+    height: 100%;
+    width: auto; }
+
+.jaune {
+  height: 250px;
+  background-color: #FBDB00; }
+
+.bleu {
+  height: 250px;
+  background-color: #0072B9; }
 
 /*# sourceMappingURL=style.css.map */
