@@ -1,0 +1,36 @@
+
+/* ----------<< Navbar Style >>---------- */
+
+// Navbar Body
+.navigation
+  height: 100%
+  margin: 0
+  padding: 0 !important
+  list-style: none
+  background-color: darken($fourth_color, 50%)
+  box-shadow: 1px 0 1px darken($fourth_color, 25%)
+  color: $font_color
+
+  p
+    margin: 0
+    padding: 25px
+
+  // Navbar Buttons
+  li, .toggleSubMenu > a
+    background: $fourth_color
+    background: -webkit-linear-gradient($fourth_color, darken($fourth_color, 10%))
+    background: -o-linear-gradient($fourth_color, darken($fourth_color, 10%))
+    background: -moz-linear-gradient($fourth_color, darken($fourth_color, 10%))
+    background: linear-gradient($fourth_color, darken($fourth_color, 10%))
+    box-shadow: 0 1px 1px darken($fourth_color, 35%)
+
+    a, span
+      display: block
+      text-decoration: none
+      color: $font_color
+
+  .toggleSubMenu > a
+    padding: 25px
+
+  .subMenu > li
+    padding: 10px
