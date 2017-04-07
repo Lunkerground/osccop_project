@@ -1,3 +1,14 @@
+.banner {
+  height: 300px;
+  background-image: url("../../images/banner.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
 
+nav {
+  background-color: #0072B9; }
+  nav img {
+    top: -95%;
+    height: 190px; }
 
 /*# sourceMappingURL=navbar.css.map */
