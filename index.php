@@ -1,57 +1,40 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
   <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OSCCOP - Accueil</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Materialize - Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/convert/style.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
   </head>
   <body>
 
-    <?php
+    <header>
 
-      include('pages/components/navbar.php');
-
-    ?>
-
-    <!-- <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 banner">
-          <img src="images/banner.jpg" alt="Bannière" class="img-responsive">
-        </div>
+      <div class="banner">
+        
       </div>
-      <div class="row">
-        <div class="col-xs-6 jaune">
 
-        </div>
-        <div class="col-xs-6 bleu">
+      <?php
 
-        </div>
-      </div>
-    </div> -->
+        include('pages/components/navbar.php');
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      ?>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </header>
+
+    <!-- Materialize - Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
   </body>
 </html>

@@ -1,32 +1,22 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"></a>
-    </div>
+<nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#"></a></li>
+  <div class="nav-wrapper">
 
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"></a></li>
+    <!-- Logo -->
+    <img src="images/logo_osccop.png" alt="logo" class="brand-logo center">
 
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="">Accueil</a></li>
+      <li><a href="">Compte-rendus</a></li>
+      <li><a href="">Médias</a></li>
+    </ul>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="">Presse</a></li>
+      <li><a href="">Présentation</a></li>
+      <li><a href="">Contact</a></li>
+    </ul>
+
+  </div>
+
 </nav>
