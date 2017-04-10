@@ -12,33 +12,6 @@ nav {
     height: 190px; }
 
 /* ----------<< Navbar Style >>---------- */
-.navigation {
-  height: 100%;
-  margin: 0;
-  padding: 0 !important;
-  list-style: none;
-  background-color: #5e5e5e;
-  box-shadow: 1px 0 1px #9d9d9d;
-  color: #0F0F0F; }
-  .navigation p {
-    margin: 0;
-    padding: 25px; }
-  .navigation li, .navigation .toggleSubMenu > a {
-    background: #DDDDDD;
-    background: -webkit-linear-gradient(#DDDDDD, #c4c4c4);
-    background: -o-linear-gradient(#DDDDDD, #c4c4c4);
-    background: -moz-linear-gradient(#DDDDDD, #c4c4c4);
-    background: linear-gradient(#DDDDDD, #c4c4c4);
-    box-shadow: 0 1px 1px #848484; }
-    .navigation li a, .navigation li span, .navigation .toggleSubMenu > a a, .navigation .toggleSubMenu > a span {
-      display: block;
-      text-decoration: none;
-      color: #0F0F0F; }
-  .navigation .toggleSubMenu > a {
-    padding: 25px; }
-  .navigation .subMenu > li {
-    padding: 10px; }
-
 html, body {
   height: 100%; }
 
