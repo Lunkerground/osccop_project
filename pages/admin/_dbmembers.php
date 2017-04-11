@@ -11,7 +11,7 @@
         <h3>Ajout</h3>
       </div>
       <div class="">
-        <form class="" action="" method="">
+        <form class="" action="../../php/ajoutMembre.php" method="POST">
           <label for="name">Nom</label>
           <input type="text" name="name" id="name">
           <label for="firstname">Prénom</label>
