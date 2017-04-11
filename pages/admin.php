@@ -83,10 +83,12 @@
           </div>
           <div class="small-6 columns">
             <div class="section">
-              <h3>Modification</h3>
+              <h3>Modification / Suppression</h3>
             </div>
             <div class="">
               <form class="" action="" method="">
+                <label for="search">Rechercher</label>
+                <input type="text" name="search" id="search">
                 <label for="name">Nom</label>
                 <input type="text" name="name" id="name">
                 <label for="firstname">Prénom</label>
@@ -99,7 +101,7 @@
               </form>
             </div>
           </div>
-          <div class="small-6 columns">
+          <!-- <div class="small-6 columns">
             <div class="section">
               <h3>Suppression</h3>
             </div>
@@ -116,7 +118,7 @@
                 <input type="button" name="send" value="Supprimer">
               </form>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
