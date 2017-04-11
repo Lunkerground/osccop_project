@@ -11,12 +11,11 @@ nav {
     top: -95%;
     height: 190px; }
 
-.jaune {
-  height: 250px;
-  background-color: #FBDB00; }
+/* ----------<< Navbar Style >>---------- */
+html, body {
+  height: 100%; }
 
-.bleu {
-  height: 250px;
-  background-color: #0072B9; }
+body {
+  background-color: #DDDDDD; }
 
 /*# sourceMappingURL=style.css.map */
