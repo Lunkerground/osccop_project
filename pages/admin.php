@@ -1,3 +1,24 @@
+<?php
+
+session_start();
+
+if ($_SESSION['login'] == false || empty($_SESSION['login'])) {
+  header('location:../index.php');
+}
+
+include '../php/_connexion.php';
+
+$res = mysqli_query($cnx, "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'");
+
+$data = mysqli_fetch_assoc($res);
+
+if ($data['Membre_actif'] == 'false') {
+  session_destroy();
+  header('location:../index.php');
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,30 +41,40 @@
       <!-- LEFT SECTION - NAVIGATION SIDE BAR -->
       <div class="small-2 columns accordion" style="border: 1px black solid">
         <p>OSCCOP<br/>Espace Administration</p>
-        <ul>
-          <li class="toggleSubMenu"><span>Administration</span>
-            <ul class="subMenu">
-              <li><a href="#!">Evénements / Compte-rendus</a></li>
-              <li><a href="#!">Presse</a></li>
-              <li><a href="#!">Présentation</a></li>
+        <?php
 
-              <!-- Temporary waiting to fix it properly -->
-              <li><a href="#!">BDD - Consoles</a></li>
-              <li><a href="#!">BDD - Jeux</a></li>
-              <li><a href="#!">BDD - Lieux</a></li>
-              <li><a href="#!">BDD - Membres</a></li>
+        if ($data['Super_User'] == 'true'){
+          echo '
+          <ul>
+            <li class="toggleSubMenu"><span>Administration</span>
+              <ul class="subMenu">
+                <li><a href="#!">Evénements / Compte-rendus</a></li>
+                <li><a href="#!">Presse</a></li>
+                <li><a href="#!">Présentation</a></li>
 
-              <!-- <li class="toggleSubMenu"><span>Base de Données</span>
-                <ul class="subMenu">
-                  <li><a href="#!">Consoles</a></li>
-                  <li><a href="#!">Jeux</a></li>
-                  <li><a href="#!">Lieux</a></li>
-                  <li><a href="#!">Membres</a></li>
-                </ul>
-              </li> -->
+                <!-- Temporary waiting to fix it properly -->
+                <li><a href="#!">BDD - Consoles</a></li>
+                <li><a href="#!">BDD - Jeux</a></li>
+                <li><a href="#!">BDD - Lieux</a></li>
+                <li><a href="#!">BDD - Membres</a></li>
 
-            </ul>
-          </li>
+                <!-- <li class="toggleSubMenu"><span>Base de Données</span>
+                  <ul class="subMenu">
+                    <li><a href="#!">Consoles</a></li>
+                    <li><a href="#!">Jeux</a></li>
+                    <li><a href="#!">Lieux</a></li>
+                    <li><a href="#!">Membres</a></li>
+                  </ul>
+                </li> -->
+
+              </ul>
+
+            </li>
+          ';
+        }
+
+          ?>
+
           <li class="toggleSubMenu"><span>Membres</span>
             <ul class="subMenu">
               <li><a href="#!">Médias / Tests</a></li>
@@ -55,221 +86,39 @@
       <!-- RIGHT SECTION - ADMIN CONTENTS -->
 
       <!-- DATABASE - MEMBERS -->
-      <div class="small-10 columns" style="border: 1px black solid">
-        <div class="row expanded">
-          <div class="small-12 columns header_section">
-            <h1>Membres</h1>
-          </div>
-        </div>
-        <div class="row expanded">
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Ajout</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="">
-                <label for="name">Nom</label>
-                <input type="text" name="name" id="name">
-                <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" id="firstname">
-                <label for="surname">Pseudo</label>
-                <input type="text" name="surname" id="surname">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email">
-                <input type="button" name="send" value="Ajouter">
-              </form>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="">
-                <label for="search">Rechercher</label>
-                <input type="text" name="search" id="search">
-                <label for="name">Nom</label>
-                <input type="text" name="name" id="name">
-                <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" id="firstname">
-                <label for="surname">Pseudo</label>
-                <input type="text" name="surname" id="surname">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email">
-                <input type="button" name="send" value="Modifier">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+
+        include('admin/_dbmembers.php');
+
+      ?>
 
       <!-- DATABASE - GAMES -->
-      <div class="small-10 small-offset-2 columns" style="border: 1px black solid">
-        <div class="row expanded">
-          <div class="small-12 columns header_section">
-            <h1>Jeux</h1>
-          </div>
-        </div>
-        <div class="row expanded">
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Ajout</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="name">Nom</label>
-                <input type="text" name="name" id="name">
-                <label for="console">Console associée</label>
-                <input type="text" name="console" id="console">
-                <label for="image_game">Image</label>
-                <input type="file" name="image_game" id="image_game">
-                <input type="button" name="send" value="Ajouter">
-              </form>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="search">Rechercher</label>
-                <input type="text" name="search" id="search">
-                <label for="name_game">Nom</label>
-                <input type="text" name="name_game" id="name_game">
-                <label for="console">Console associée</label>
-                <input type="text" name="console" id="console">
-                <label for="image_game">Image</label>
-                <input type="file" name="image_game" id="image_game">
-                <input type="button" name="send" value="Modifier">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+
+        include('admin/_dbgames.php');
+
+      ?>
 
       <!-- DATABASE - CONSOLES -->
-      <div class="small-10 small-offset-2 columns" style="border: 1px black solid">
-        <div class="row expanded">
-          <div class="small-12 columns header_section">
-            <h1>Consoles</h1>
-          </div>
-        </div>
-        <div class="row expanded">
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Ajout</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="name_console">Nom</label>
-                <input type="text" name="name_console" id="name_console">
-                <label for="image_console">Image</label>
-                <input type="file" name="image_console" id="image_console">
-                <input type="button" name="send" value="Ajouter">
-              </form>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="search">Rechercher</label>
-                <input type="text" name="search" id="search">
-                <label for="name_console">Nom</label>
-                <input type="text" name="name_console" id="name_console">
-                <label for="image_console">Image</label>
-                <input type="file" name="image_console" id="image_console">
-                <input type="button" name="send" value="Modifier">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+
+        include('admin/_dbconsoles.php');
+
+      ?>
 
       <!-- DATABASE - PODCASTS -->
-      <div class="small-10 small-offset-2 columns" style="border: 1px black solid">
-        <div class="row expanded">
-          <div class="small-12 columns header_section">
-            <h1>Podcasts</h1>
-          </div>
-        </div>
-        <div class="row expanded">
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Ajout</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="event_podcast">Évènement lié</label>
-                <input type="text" name="event_podcast" id="event_podcast">
-                <label for="podcast_file">Upload du podcast</label>
-                <input type="file" name="podcast_file" id="podcast_file">
-                <input type="button" name="send" value="Ajouter">
-              </form>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="" enctype="multipart/form-data">
-                <label for="search">Rechercher</label>
-                <input type="text" name="search" id="search">
-                <label for="event_podcast">Évènement lié</label>
-                <input type="text" name="event_podcast" id="event_podcast">
-                <label for="podcast_file">Upload du podcast</label>
-                <input type="file" name="podcast_file" id="podcast_file">
-                <input type="button" name="send" value="Modifier">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+
+        include('admin/_dbpodcasts.php');
+
+      ?>
 
       <!-- DATABASE - LOCATIONS -->
-      <div class="small-10 small-offset-2 columns" style="border: 1px black solid">
-        <div class="row expanded">
-          <div class="small-12 columns header_section">
-            <h1>Lieux</h1>
-          </div>
-        </div>
-        <div class="row expanded">
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Ajout</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="">
-                <label for="name_location">Nom</label>
-                <input type="text" name="name_location" id="name_location">
-                <label for="adress">Adresse</label>
-                <input type="text" name="adress" id="adress">
-                <input type="button" name="send" value="Ajouter">
-              </form>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-            <div class="">
-              <form class="" action="" method="">
-                <label for="search">Rechercher</label>
-                <input type="text" name="search" id="search">
-                <label for="name_location">Nom</label>
-                <input type="text" name="name_location" id="name_location">
-                <label for="adress">Adresse</label>
-                <input type="text" name="adress" id="adress">
-                <input type="button" name="send" value="Modifier">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+
+        include('admin/_dblocations.php');
+
+      ?>
 
     </div>
 
