@@ -1,6 +1,6 @@
 <?php
 
-include 'connexion.php';
+include '_connexion.php';
 
 $name = isset($_POST['name'])?$_POST['name']: "";
 $firstname = isset($_POST['firstname'])?$_POST['firstname']: "";
@@ -35,8 +35,8 @@ if(isset($_POST['surname'])){
 // echo $hash;
 
 $res = mysqli_query($cnx,
- "INSERT INTO membre(Nom, Prenom, Identifiant, Mdp, Super_User, Membre_actif, Mail)
-  VALUES ('$name', '$firstname', '$surname', '$hash', 'false', 'true', '$email')");
+ "INSERT INTO membre(Nom, Prenom, Identifiant,Mdp, Hash, Super_User, Membre_actif, Mail)
+  VALUES ('$name', '$firstname', '$surname', '$password', '$hash', 'false', 'true', '$email')");
 
 print_r($res);
  ?>
