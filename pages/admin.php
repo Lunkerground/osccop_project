@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if ($_SESSION['login'] == false) {
+  header('location:../index.php');
+}
+else {
+
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -54,6 +67,13 @@
 
       <!-- RIGHT SECTION - ADMIN CONTENTS -->
 
+      <!-- DATABASE - EVENT -->
+      <?php
+
+      include('admin/_dbevent.php');
+
+      ?>
+
       <!-- DATABASE - MEMBERS -->
       <?php
 
@@ -88,6 +108,7 @@
         include('admin/_dblocations.php');
 
       ?>
+
 
     </div>
 
