@@ -25,19 +25,16 @@ var request = (inpVal) => {
       nbGameMaxDisplay = 20;
       gameData = JSON.parse(data);
       numberOfGameFound = gameData[0].nbRow;
-      console.log("number of game : " + numberOfGameFound);
       gameData.shift();
 
       // ajoute la pagination si le nombre de jeux à afficher dépasse la limite
       if (numberOfGameFound > nbGameMaxDisplay) {
-        $('#pages').html("");
         $('#pages').html("");
         for (let p = 1; p <= Math.ceil(numberOfGameFound / nbGameMaxDisplay); p++) {
           $('#pages').append("<a href='#' class='pagenb'>" + p + " </a>");
         }
         $('a.pagenb').click(function() {
           queryOffset = $(".pagenb").index($(this)) * nbGameMaxDisplay;
-          console.log("offset = " + queryOffset);
           $("#gamelist").html("");
           resultDisplay(gameData, queryOffset, nbGameMaxDisplay);
         });
@@ -55,6 +52,7 @@ var request = (inpVal) => {
 };
 var resultDisplay = (data, offset, limit) => {
   $("#gamelist").html("");
+  $('#nbGame').html("");
   let limitOfGame = limit;
   if (numberOfGameFound <= 1) {
     $("#nbGame").append("<strong>" + numberOfGameFound + "</strong> jeu trouvé");
