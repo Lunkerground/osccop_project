@@ -10,52 +10,70 @@ $date = explode('/', $data['date_event']);
 
 ?>
 
- <!DOCTYPE html>
- <html>
-   <head>
-     <meta charset="utf-8">
-     <title></title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   </head>
-   <body>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
 
 
-  <div class="small-10 columns" style="border: 1px black solid">
-     <div class="row expanded">
-      <div class="small-12 columns header_section">
-        <h1>Evenement</h1>
-      </div>
-
-    <div class="row expanded">
-
-      <div class="small-6 columns">
-        <div class="section">
-          <h3>Ajout</h3>
-        </div>
-        <div class="">
-          <form class="" action="../php/ajoutEvent.php" method="POST" enctype="multipart/form-data">
-            <label for="name">Nom de l'événement</label>
-            <input type="text" name="name" id="name">
-            <label for="time">Date de l'événement</label>
-            <input type="date" name="time" id="time">
-            <label for="affiche">Affiche</label>
-            <input type="file" name="affiche" id="affiche">
-            <label for="presentation">Presentation</label>
-            <textarea name="presentation" rows="8" cols="40"></textarea>
-            <input type="submit" name="send" value="Ajouter">
-          </form>
-        </div>
-      </div>
-
-      <div class="small-6 columns">
-
-        <div class="section">
-          <h3>Modification / Suppression</h3>
+    <div class="small-10 columns" style="border: 1px black solid">
+      <div class="row expanded">
+        <div class="small-12 columns header_section">
+          <h1>Evenement</h1>
         </div>
 
-        <select class="" name="mois" id='mois'>
+        <div class="row expanded">
+
+          <div class="small-6 columns">
+            <div class="section">
+              <h3>Ajout</h3>
+            </div>
+            <div class="">
+              <form class="" action="../php/ajoutEvent.php" method="POST" enctype="multipart/form-data">
+                <label for="name">Nom de l'événement</label>
+                <input type="text" name="name" id="name">
+                <label for="time">Date de l'événement</label>
+                <input type="date" name="time" id="time">
+                <label for="affiche">Affiche</label>
+                <input type="file" name="affiche" id="affiche">
+                <label for="presentation">Presentation</label>
+                <textarea name="presentation" rows="8" cols="40"></textarea>
+                <label for="lookingForGame">recherche de jeux</label>
+                <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
+                <label for="typeOfSearch">Recherche par:</label>
+                <select class="typeOfSearch" name="typeOfSearch">
+                  <option value="jeu">Jeu</option>
+                  <option value="console">Console</option>
+                </select>
+                <input type="submit" name="send" value="Ajouter">
+                <div class="">
+                  <div class="">
+                    <div id="nbGame"></div>
+                  </div>
+                  <div id='pages'></div>
+                  <div id="gamelist"></div>
+                </div>
+                <div class="choosengame col-md-3 col-sm-6"></div>
+            </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="small-6 columns">
+
+          <div class="section">
+            <h3>Modification / Suppression</h3>
+          </div>
+
+          <select class="" name="mois" id='mois'>
           <option value="" selected>Selectionner un mois ...</option>
           <option value="01">Janvier</option>
           <option value="02">Fevrier</option>
@@ -71,7 +89,7 @@ $date = explode('/', $data['date_event']);
           <option value="12">Décembre</option>
         </select>
 
-        <select class="annee" name="annee" id='annee'>
+          <select class="annee" name="annee" id='annee'>
           <option value="" selected>Selectionner une année ...</option>
           <?php
           for ($i = 2011; $i <= $date[2]; ++$i) {
@@ -80,46 +98,47 @@ $date = explode('/', $data['date_event']);
           ?>
         </select>
 
+        </div>
+
+        <ul id='TEST'></ul>
+
       </div>
 
-       <ul id='TEST'></ul>
+    </div>
 
-     </div>
+    </div>
 
-   </div>
+  </body>
 
-</div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../../js/jeu.js"></script>
 
-   </body>
-
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-   <script type="text/javascript">
-
+  <script type="text/javascript">
     var titreDataAll;
-    $('#mois,#annee').change(function(){
+    $('#mois,#annee').change(function() {
       $('#TEST').html("");
       var monthValue = $("#mois").val();
       var yearValue = $("#annee").val();
-          $.ajax({
-              method: "POST",
-              url : "../php/lookingforevent.php",
-              data: {
-                  'mois' : monthValue,
-                  'annee' : yearValue,
-              },
-              datatype: "json",
-              success: (data) => {
-                titreDataAll = JSON.parse(data);
-                console.log(titreDataAll);
-                for (var i = 0; i < titreDataAll.length; i++) {
-                  $('#TEST').append('<li id="'+titreDataAll[i].id_event+'"> <a href="" data-toggle="modal" data-target="">' + titreDataAll[i].titre_event + '</a> </li>');
-                  $('#idArticleSuppr').val(titreDataAll[i].id_event);
-                }
-              }
-          });
+      $.ajax({
+        method: "POST",
+        url: "../php/lookingforevent.php",
+        data: {
+          'mois': monthValue,
+          'annee': yearValue,
+        },
+        datatype: "json",
+        success: (data) => {
+          titreDataAll = JSON.parse(data);
+          console.log(titreDataAll);
+          for (var i = 0; i < titreDataAll.length; i++) {
+            $('#TEST').append('<li id="' + titreDataAll[i].id_event +
+              '"> <a href="" data-toggle="modal" data-target="">' + titreDataAll[i].titre_event +
+              '</a> </li>');
+            $('#idArticleSuppr').val(titreDataAll[i].id_event);
+          }
+        }
+      });
     });
+  </script>
 
-   </script>
-
- </html>
+  </html>
