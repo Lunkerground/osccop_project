@@ -23,15 +23,15 @@
         <ul>
           <li class="toggleSubMenu"><span>Administration</span>
             <ul class="subMenu">
-              <li><a href="#!">Evénements / Compte-rendus</a></li>
+              <li><a href="?page=events">Evénements / Compte-rendus</a></li>
               <li><a href="#!">Presse</a></li>
               <li><a href="#!">Présentation</a></li>
 
               <!-- Temporary waiting to fix it properly -->
-              <li><a href="#!">BDD - Consoles</a></li>
-              <li><a href="#!">BDD - Jeux</a></li>
-              <li><a href="#!">BDD - Lieux</a></li>
-              <li><a href="#!">BDD - Membres</a></li>
+              <li><a href="?page=dbconsoles">BDD - Consoles</a></li>
+              <li><a href="?page=dbgames">BDD - Jeux</a></li>
+              <li><a href="?page=dblocations">BDD - Lieux</a></li>
+              <li><a href="?page=dbmembers">BDD - Membres</a></li>
 
               <!-- <li class="toggleSubMenu"><span>Base de Données</span>
                 <ul class="subMenu">
@@ -54,38 +54,38 @@
 
       <!-- RIGHT SECTION - ADMIN CONTENTS -->
 
-      <!-- DATABASE - MEMBERS -->
       <?php
 
-        include('admin/_dbmembers.php');
+        if (isset($_GET['page']) && $_GET['page'] == 'events') {
 
-      ?>
+          include('admin/_events.php');
 
-      <!-- DATABASE - GAMES -->
-      <?php
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'dbmembers') {
 
-        include('admin/_dbgames.php');
+          // DATABASE - MEMBERS
+          include('admin/_dbmembers.php');
 
-      ?>
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'dbgames') {
 
-      <!-- DATABASE - CONSOLES -->
-      <?php
+          // DATABASE - GAMES
+          include('admin/_dbgames.php');
 
-        include('admin/_dbconsoles.php');
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'dbconsoles') {
 
-      ?>
+          // DATABASE - CONSOLES
+          include('admin/_dbconsoles.php');
 
-      <!-- DATABASE - PODCASTS -->
-      <?php
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'dbpodcasts') {
 
-        include('admin/_dbpodcasts.php');
+          // DATABASE - PODCASTS
+          include('admin/_dbpodcasts.php');
 
-      ?>
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'dblocations') {
 
-      <!-- DATABASE - LOCATIONS -->
-      <?php
+          // DATABASE - LOCATIONS
+          include('admin/_dblocations.php');
 
-        include('admin/_dblocations.php');
+        }
 
       ?>
 
