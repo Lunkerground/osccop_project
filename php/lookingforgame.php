@@ -32,7 +32,10 @@
         </div>
       </div>
       <div class="row">
-        <div id="gamelist" class="col-md-3 col-sm-6"></div>
+        <div class="col-md-3 col-sm-6">
+          <div id='pages'></div>
+          <div id="gamelist"></div>
+        </div>
         <div class="choosengame col-md-3 col-sm-6"></div>
       </div>
       <button type="button" name="button">Envoyer</button>

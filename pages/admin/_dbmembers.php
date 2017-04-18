@@ -20,7 +20,7 @@
           <input type="text" name="surname" id="surname">
           <label for="email">Email</label>
           <input type="text" name="email" id="email">
-          <input type="button" name="send" value="Ajouter">
+          <input type="submit" name="send" value="Ajouter">
         </form>
       </div>
     </div>

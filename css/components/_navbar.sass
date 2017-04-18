@@ -8,8 +8,28 @@
     repeat: no-repeat
     position: center
 
-nav
+.navigation
   background-color: $main_color
+  border-radius: 10px
+
+  li
+    margin: auto
+    
+    a
+      font-weight: bold
+      text-shadow: 1px 1px $font_color
+      color: $second_color !important
+
+  .logo
+    margin-left: 0
+
   img
-    top: -95%
-    height: 190px
+    position: absolute
+    top: 51%
+    left: 50%
+    transform: translate(-50%, -50%)
+    height: 143px
+    width: auto
+
+.navbar-right
+  margin-right: 0
