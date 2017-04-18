@@ -55,7 +55,7 @@ $date = explode('/', $data['date_event']);
           <h3>Modification / Suppression</h3>
         </div>
 
-        <select class="" name="mois" id='mois'>
+        <select class="small-6 columns" name="mois" id='mois'>
           <option value="" selected>Selectionner un mois ...</option>
           <option value="01">Janvier</option>
           <option value="02">Fevrier</option>
@@ -71,7 +71,7 @@ $date = explode('/', $data['date_event']);
           <option value="12">Décembre</option>
         </select>
 
-        <select class="annee" name="annee" id='annee'>
+        <select class="annee small-6 columns" name="annee" id='annee'>
           <option value="" selected>Selectionner une année ...</option>
           <?php
           for ($i = 2011; $i <= $date[2]; ++$i) {
