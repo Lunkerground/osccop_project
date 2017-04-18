@@ -5,11 +5,27 @@
   background-repeat: no-repeat;
   background-position: center; }
 
-nav {
-  background-color: #0072B9; }
-  nav img {
-    top: -95%;
-    height: 190px; }
+.navigation {
+  background-color: #0072B9;
+  border-radius: 10px; }
+  .navigation li {
+    margin: auto; }
+    .navigation li a {
+      font-weight: bold;
+      text-shadow: 1px 1px #0F0F0F;
+      color: #FBDB00 !important; }
+  .navigation .logo {
+    margin-left: 0; }
+  .navigation img {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 143px;
+    width: auto; }
+
+.navbar-right {
+  margin-right: 0; }
 
 /* ----------<< Navbar Style >>---------- */
 html, body {
