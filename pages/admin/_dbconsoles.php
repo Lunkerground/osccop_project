@@ -1,5 +1,5 @@
 <!-- DATABASE - CONSOLES -->
-<div class="small-10 small-offset-2 columns" style="border: 1px black solid">
+<div class="small-10 columns" style="border: 1px black solid">
   <div class="row expanded">
     <div class="small-12 columns header_section">
       <h1>Consoles</h1>

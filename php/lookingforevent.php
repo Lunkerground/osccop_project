@@ -1,21 +1,21 @@
 <?php
-$cnx = mysqli_connect('localhost', 'root', 'codeurKiFFeur', 'osccop') or die('error='.mysqli_connect_errno());
+include_once('_connexion.php');
 
     $i = 0;
     $titreDataAll = array();
     $mois = $_POST['mois'];
     $annee = $_POST['annee'];
     if ($mois != "") {
-      $res = mysqli_query($cnx, "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$mois/$annee%'");
+      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$mois/$annee%'";
     }
     elseif ($annee != "") {
-      $res = mysqli_query($cnx, "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$annee'");
+      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$annee'";
     }
-    while ($data = mysqli_fetch_assoc($res)) {
-      $titreDataAll[$i] = $data;
-      $i++;
+    $data = $cnx->prepare($res);
+    $data->execute();
+    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+      $titreDataAll[] = $row;
     }
     echo json_encode($titreDataAll);
-    mysqli_close($cnx);
 
 ?>

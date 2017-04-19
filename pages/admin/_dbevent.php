@@ -2,9 +2,11 @@
 
 include '../php/_connexion.php';
 
-$res = mysqli_query($cnx, 'SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1');
+$res = 'SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1';
 
-$data = mysqli_fetch_assoc($res);
+$data = $cnx->prepare($res);
+$data->execute();
+$data = $data->fetch(PDO::FETCH_ASSOC);
 
 $date = explode('/', $data['date_event']);
 
@@ -77,7 +79,6 @@ $date = explode('/', $data['date_event']);
               <input type="submit" name="send" value="Valider l'événement">
             </form>
           </div>
-        </div>
 
         <div class="small-6 large-6 columns">
 
@@ -85,24 +86,25 @@ $date = explode('/', $data['date_event']);
             <h3>Modification / Suppression</h3>
           </div>
 
-          <select class="" name="mois" id='mois'>
-            <option value="" selected>Selectionner un mois ...</option>
-            <option value="01">Janvier</option>
-            <option value="02">Fevrier</option>
-            <option value="03">Mars</option>
-            <option value="04">Avril</option>
-            <option value="05">Mai</option>
-            <option value="06">Juin</option>
-            <option value="07">Juillet</option>
-            <option value="08">Août</option>
-            <option value="09">Septembre</option>
-            <option value="10">Octobre</option>
-            <option value="11">Novembre</option>
-            <option value="12">Décembre</option>
-          </select>
+        <select class="small-6 columns" name="mois" id='mois'>
+          <option value="" selected>Selectionner un mois ...</option>
+          <option value="01">Janvier</option>
+          <option value="02">Fevrier</option>
+          <option value="03">Mars</option>
+          <option value="04">Avril</option>
+          <option value="05">Mai</option>
+          <option value="06">Juin</option>
+          <option value="07">Juillet</option>
+          <option value="08">Août</option>
+          <option value="09">Septembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
+        </select>
 
-          <select class="annee" name="annee" id='annee'>
-            <option value="" selected>Selectionner une année ...</option>
+        <select class="annee small-6 columns" name="annee" id='annee'>
+
+          <option value="" selected>Selectionner une année ...</option>
           <?php
           for ($i = 2011; $i <= $date[2]; ++$i) {
               echo "<option value='$i'>$i</option>";
@@ -110,11 +112,14 @@ $date = explode('/', $data['date_event']);
           ?>
         </select>
 
-        </div>
+            </div>
 
-        <ul id='TEST'></ul>
+            <ul id='TEST'></ul>
 
-      </div>
+          </div>
+
+    </div>
+
 
     </div>
 
@@ -123,34 +128,9 @@ $date = explode('/', $data['date_event']);
   </body>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="http://localhost/osccop_project/js/jeu.js"></script>
 
-  <script type="text/javascript">
-    var titreDataAll;
-    $('#mois,#annee').change(function() {
-      $('#TEST').html("");
-      var monthValue = $("#mois").val();
-      var yearValue = $("#annee").val();
-      $.ajax({
-        method: "POST",
-        url: "../php/lookingforevent.php",
-        data: {
-          'mois': monthValue,
-          'annee': yearValue,
-        },
-        datatype: "json",
-        success: (data) => {
-          titreDataAll = JSON.parse(data);
-          console.log(titreDataAll);
-          for (var i = 0; i < titreDataAll.length; i++) {
-            $('#TEST').append('<li id="' + titreDataAll[i].id_event +
-              '"> <a href="" data-toggle="modal" data-target="">' + titreDataAll[i].titre_event +
-              '</a> </li>');
-            $('#idArticleSuppr').val(titreDataAll[i].id_event);
-          }
-        }
-      });
-    });
-  </script>
+  <script src="http://localhost/osccop_project/js/jeu.js"></script>
+  <script src="../js/date.js"></script>
+
 
   </html>

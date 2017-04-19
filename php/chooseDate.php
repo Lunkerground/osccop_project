@@ -4,9 +4,11 @@ session_start();
 
 include 'connexion.php';
 
-$res = mysqli_query($cnx, "SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1");
+$res = "SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1";
 
-$data = mysqli_fetch_assoc($res);
+$data = $cnx->prepare($res);
+$data->execute();
+$data = $data->fetch(PDO::FETCH_ASSOC);
 
 $date = explode("/", $data['date_event']);
 
@@ -54,31 +56,7 @@ $date = explode("/", $data['date_event']);
 
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-   <script type="text/javascript">
-
-    var titreDataAll;
-    $('#mois,#annee').change(function(){
-      $('#TEST').html("");
-      var monthValue = $("#mois").val();
-      var yearValue = $("#annee").val();
-          $.ajax({
-              method: "POST",
-              url : "lookingforevent.php",
-              data: {
-                  'mois' : monthValue,
-                  'annee' : yearValue,
-              },
-              datatype: "json",
-              success: (data) => {
-                titreDataAll = JSON.parse(data);
-                console.log(titreDataAll);
-                for (var i = 0; i < titreDataAll.length; i++) {
-                  $('#TEST').append('<li id="'+titreDataAll[i].id_event+'"> <a href="" data-toggle="modal" data-target="">' + titreDataAll[i].titre_event + '</a> </li>');
-                  $('#idArticleSuppr').val(titreDataAll[i].id_event);
-                }
-              }
-          });
-    });
+   <script src="../js/date.js"></script>
 
    </script>
 
