@@ -1,21 +1,21 @@
 <?php
 
 session_start();
-
-if ($_SESSION['login'] == false || empty($_SESSION['login'])) {
-  header('location:../index.php');
-}
-
-include '../php/_connexion.php';
-
-$res = mysqli_query($cnx, "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'");
-
-$data = mysqli_fetch_assoc($res);
-
-if ($data['Membre_actif'] == 'false') {
-  session_destroy();
-  header('location:../index.php');
-}
+$data['Super_User'] =='true';
+// if ($_SESSION['login'] == false || empty($_SESSION['login'])) {
+//   header('location:../index.php');
+// }
+//
+// include '../php/_connexion.php';
+//
+// $res = mysqli_query($cnx, "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'");
+//
+// $data = mysqli_fetch_assoc($res);
+//
+// if ($data['Membre_actif'] == 'false') {
+//   session_destroy();
+//   header('location:../index.php');
+// }
 
  ?>
 

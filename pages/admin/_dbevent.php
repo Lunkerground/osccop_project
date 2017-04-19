@@ -32,7 +32,7 @@ $date = explode('/', $data['date_event']);
 
         <div class="row expanded">
 
-          <div class="small-6 columns">
+          <div class="small-6 large-6 columns">
             <div class="section">
               <h3>Ajout</h3>
             </div>
@@ -46,51 +46,63 @@ $date = explode('/', $data['date_event']);
                 <input type="file" name="affiche" id="affiche">
                 <label for="presentation">Presentation</label>
                 <textarea name="presentation" rows="8" cols="40"></textarea>
-                <label for="lookingForGame">recherche de jeux</label>
-                <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
-                <label for="typeOfSearch">Recherche par:</label>
-                <select class="typeOfSearch" name="typeOfSearch">
-                  <option value="jeu">Jeu</option>
-                  <option value="console">Console</option>
-                </select>
-                <input type="submit" name="send" value="Ajouter">
-                <div class="">
-                  <div class="">
-                    <div id="nbGame"></div>
+                <fieldset>
+                  <legend>Ajouter des jeux</legend>
+                  <div class="row">
+
+                    <div class="large-6 columns">
+                      <label for="lookingForGame">recherche de jeux
+                        <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
+                      </label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="typeOfSearch">Recherche par:
+                        <select class="typeOfSearch" name="typeOfSearch">
+                          <option value="jeu">Jeu</option>
+                          <option value="console">Console</option>
+                        </select>
+                      </label>
+                    </div>
                   </div>
-                  <div id='pages'></div>
-                  <div id="gamelist"></div>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <div id="nbGame"></div>
+                      <div id='pages'></div>
+                      <div id="gamelist"></div>
+                    </div>
+                    <div class="choosedgame large-6 columns"></div>
+                  </div>
                 </div>
-                <div class="choosengame col-md-3 col-sm-6"></div>
-            </div>
+              </fieldset>
+              <input type="submit" name="send" value="Valider l'événement">
             </form>
           </div>
         </div>
 
-        <div class="small-6 columns">
+        <div class="small-6 large-6 columns">
 
           <div class="section">
             <h3>Modification / Suppression</h3>
           </div>
 
           <select class="" name="mois" id='mois'>
-          <option value="" selected>Selectionner un mois ...</option>
-          <option value="01">Janvier</option>
-          <option value="02">Fevrier</option>
-          <option value="03">Mars</option>
-          <option value="04">Avril</option>
-          <option value="05">Mai</option>
-          <option value="06">Juin</option>
-          <option value="07">Juillet</option>
-          <option value="08">Août</option>
-          <option value="09">Septembre</option>
-          <option value="10">Octobre</option>
-          <option value="11">Novembre</option>
-          <option value="12">Décembre</option>
-        </select>
+            <option value="" selected>Selectionner un mois ...</option>
+            <option value="01">Janvier</option>
+            <option value="02">Fevrier</option>
+            <option value="03">Mars</option>
+            <option value="04">Avril</option>
+            <option value="05">Mai</option>
+            <option value="06">Juin</option>
+            <option value="07">Juillet</option>
+            <option value="08">Août</option>
+            <option value="09">Septembre</option>
+            <option value="10">Octobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Décembre</option>
+          </select>
 
           <select class="annee" name="annee" id='annee'>
-          <option value="" selected>Selectionner une année ...</option>
+            <option value="" selected>Selectionner une année ...</option>
           <?php
           for ($i = 2011; $i <= $date[2]; ++$i) {
               echo "<option value='$i'>$i</option>";
@@ -111,7 +123,7 @@ $date = explode('/', $data['date_event']);
   </body>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="../../js/jeu.js"></script>
+  <script src="http://localhost/osccop_project/js/jeu.js"></script>
 
   <script type="text/javascript">
     var titreDataAll;
