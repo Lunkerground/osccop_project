@@ -111,7 +111,7 @@ $date = explode('/', $data['date_event']);
   </body>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="../../js/jeu.js"></script>
+  <script src="http://localhost/osccop_project//js/jeu.js"></script>
 
   <script type="text/javascript">
     var titreDataAll;
