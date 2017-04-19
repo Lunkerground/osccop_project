@@ -10,6 +10,8 @@ echo $date."<br>";
 echo $presentation."<br>";
 echo $affiche."<br>";
 
+// PENSER AU JEUX AJOUTER 
+
 $res = move_uploaded_file($_FILES['affiche']['tmp_name'], '../images/upload/affiche/'.$affiche);
 
 

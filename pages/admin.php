@@ -8,9 +8,12 @@ if ($_SESSION['login'] == false || empty($_SESSION['login'])) {
 
 include '../php/_connexion.php';
 
-$res = mysqli_query($cnx, "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'");
+$res = "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'";
 
-$data = mysqli_fetch_assoc($res);
+
+$data = $cnx->prepare($res);
+$data->execute();
+$data = $data->fetch(PDO::FETCH_ASSOC);
 
 if ($data['Membre_actif'] == 'false') {
   session_destroy();
@@ -49,15 +52,15 @@ if ($data['Membre_actif'] == 'false') {
           <ul>
             <li class="toggleSubMenu"><span>Administration</span>
               <ul class="subMenu">
-                <li><a href="#!">Evénements / Compte-rendus</a></li>
-                <li><a href="#!">Presse</a></li>
-                <li><a href="#!">Présentation</a></li>
+                <li><a href="?page=events">Evénements / Compte-rendus</a></li>
+                <li><a href="?page=">Presse</a></li>
+                <li><a href="?page=">Présentation</a></li>
 
                 <!-- Temporary waiting to fix it properly -->
-                <li><a href="#!">BDD - Consoles</a></li>
-                <li><a href="#!">BDD - Jeux</a></li>
-                <li><a href="#!">BDD - Lieux</a></li>
-                <li><a href="#!">BDD - Membres</a></li>
+                <li><a href="?page=dbconsoles">BDD - Consoles</a></li>
+                <li><a href="?page=dbgames">BDD - Jeux</a></li>
+                <li><a href="?page=dblocations">BDD - Lieux</a></li>
+                <li><a href="?page=dbmembers">BDD - Membres</a></li>
 
                 <!-- <li class="toggleSubMenu"><span>Base de Données</span>
                   <ul class="subMenu">
@@ -86,20 +89,13 @@ if ($data['Membre_actif'] == 'false') {
 
       <!-- RIGHT SECTION - ADMIN CONTENTS -->
 
-      <!-- DATABASE - EVENT -->
-      <?php
-
-      include('admin/_dbevent.php');
-
-      ?>
-
       <!-- DATABASE - MEMBERS -->
 
       <?php
 
         if (isset($_GET['page']) && $_GET['page'] == 'events') {
 
-          include('admin/_events.php');
+          include('admin/_dbevent.php');
 
         } elseif (isset($_GET['page']) && $_GET['page'] == 'dbmembers') {
 

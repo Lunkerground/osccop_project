@@ -7,13 +7,13 @@ $password = isset($_POST['mdp'])? $_POST['mdp'] : "";
 
 include '_connexion.php';
 
-$res = mysqli_query($cnx,"SELECT Identifiant, Mdp, Hash FROM membre WHERE Identifiant = '$identifiant'");
+$res = "SELECT Identifiant, Mdp, Hash FROM membre WHERE Identifiant = '$identifiant'";
 
-// print_r($res);
+$data = $cnx->prepare($res);
+$data->execute();
+while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
 
-while ($data = mysqli_fetch_assoc($res)) {
-
-  if ( hash_equals($data['Hash'], crypt($password, $data['Hash'])) ) {
+  if ( hash_equals($row['Hash'], crypt($password, $row['Hash'])) ) {
     $_SESSION['login'] = true;
     $_SESSION['user'] = $identifiant;
     header('location:../pages/admin.php');
