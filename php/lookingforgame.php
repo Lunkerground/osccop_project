@@ -24,11 +24,12 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <label for="typeOfSearch">Recherche par:</label>
+          <label for="typeOfSearch">Recherche par:
             <select class="typeOfSearch" name="typeOfSearch">
               <option value="jeu">Jeu</option>
               <option value="console">Console</option>
             </select>
+          </label>
         </div>
       </div>
       <div class="row">
