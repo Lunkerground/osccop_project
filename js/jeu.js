@@ -16,6 +16,7 @@ var request = (inpVal) => {
   $.ajax({
     method: "GET",
     url: "http://localhost/osccop_project/php/gamesearch.php",
+
     data: {
       game: inpVal,
       typeOfSearch: $("select[name=typeOfSearch]").val()
