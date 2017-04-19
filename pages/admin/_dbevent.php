@@ -53,16 +53,16 @@ $date = explode('/', $data['date_event']);
                   <div class="row">
 
                     <div class="large-6 columns">
-                      <label for="lookingForGame">recherche de jeux
-                        <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
-                      </label>
-                    </div>
-                    <div class="large-6 columns">
                       <label for="typeOfSearch">Recherche par:
                         <select class="typeOfSearch" name="typeOfSearch">
                           <option value="jeu">Jeu</option>
                           <option value="console">Console</option>
                         </select>
+                      </label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="lookingForGame">recherche de jeux
+                        <input type="text" id='lookingForGame' class="form-control" placeholder="recherche de jeu">
                       </label>
                     </div>
                   </div>
