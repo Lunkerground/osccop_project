@@ -22,13 +22,9 @@
             <label for="location_event">Lieu de l'évènement</label>
             <select name="location_event" id="location_event">
               <?php
-
                 echo '<option value=""></option>';
-
               ?>
             </select>
-            <label for="games_event">Jeux de l'évènement</label>
-            <input type="search" name="games_event" id="games_event">
           </div>
 
           <div class="small-6 columns'">

@@ -8,9 +8,12 @@ if ($_SESSION['login'] == false || empty($_SESSION['login'])) {
 
 include '../php/_connexion.php';
 
-$res = mysqli_query($cnx, "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'");
+$res = "SELECT Super_User, Membre_actif FROM membre WHERE Identifiant = '".$_SESSION['user']."'";
 
-$data = mysqli_fetch_assoc($res);
+
+$data = $cnx->prepare($res);
+$data->execute();
+$data = $data->fetch(PDO::FETCH_ASSOC);
 
 if ($data['Membre_actif'] == 'false') {
   session_destroy();
