@@ -2,7 +2,7 @@
 
 // Banner Styles
 .banner
-  height: 300px
+  height: 260px
   background:
     image: url('../../images/banner.jpg')
     size: contain
@@ -16,13 +16,14 @@
   border: none
   background-color: $white_color
 
-  li
-    margin: auto
+  ul
+    margin: 10px
 
+  li
+    width: 11em
+    padding: 0 5px
     a
-      font-weight: bold
-      text-shadow: 1px 1px $black_color
-      color: $yellow_color !important
+      @extend .yellow
 
   .logo
     margin-left: 0
@@ -35,12 +36,16 @@
     height: 143px
     width: auto
 
+// [Fix] Boostrap crap
 .navbar-right
   margin-right: 0
 
 // Main Important
 .next_events
   background-color: $blue_color
+  .left_side
+    width: 50%
+    float: left
 
 .expo_foot
   background-color: $yellow_color

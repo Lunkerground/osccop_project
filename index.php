@@ -38,74 +38,109 @@
           <div class="col-xs-12 col-sm-6 next_events">
             <div class="row">
 
+              <!-- Section Title -->
               <div class="col-xs-12">
-                <h1 class="text-left">Évènements à venir</h1>
+                <h1 class="text-left"><span class="yellow">Évènements à venir</span></h1>
               </div>
 
               <!-- First Event to come -->
-              <div class="col-xs-12 col-sm-6" style="padding: 15px;">
-                <div style="background-color: grey; height: 200px; width: 50%; float: left;">
-
-                </div>
-                <div style="background-color: white; height: 200px; width: 50%; float: left;" class="text-center">
-                  <h3>Title</h3>
-                  <h3>Date</h3>
-                  <h3><a href="#">+ d'infos</a></h3>
+              <div class="col-xs-12 col-sm-6">
+                <div class="block_small">
+                  <div class="left_side">
+                    <img src="images/test_affiche.jpg" alt="affiche">
+                  </div>
+                  <div class="text-center">
+                    <h3>Les 20 ans de la Playstation</h3>
+                    <h4>Date</h4>
+                    <h5><a href="#" class="blue third_links">+ d'infos</a></h5>
+                  </div>
                 </div>
               </div>
 
               <!-- Second Event to come -->
-              <div class="col-xs-12 col-sm-6" style="padding: 15px;">
-                <div style="background-color: grey; height: 200px; width: 50%; float: left;">
-
-                </div>
-                <div style="background-color: white; height: 200px; width: 50%; float: left;" class="text-center">
-                  <h3>Title</h3>
-                  <h3>Date</h3>
-                  <h3><a href="#">+ d'infos</a></h3>
+              <div class="col-xs-12 col-sm-6" class="block_small">
+                <div class="block_small">
+                  <div class="left_side">
+                    <img src="images/test_affiche.jpg" alt="affiche">
+                  </div>
+                  <div class="text-center">
+                    <h3>Title</h3>
+                    <h4>Date</h4>
+                    <h5><a href="#" class="blue third_links">+ d'infos</a></h5>
+                  </div>
                 </div>
               </div>
 
+              <!-- Section Button -->
               <div class="col-xs-12">
-                <button type="button" name="button">Voir les anciens évènements</button>
+                <a href="#" class="yellow second_links">Plus d'évènements</a>
               </div>
 
             </div>
-          </div>
+          </div> <!-- End of .next_events -->
 
           <!-- Football Exposition -->
           <div class="col-xs-12 col-sm-6 expo_foot">
             <div class="row">
 
+              <!-- Section Title -->
               <div class="col-xs-12">
-                <h1 class="text-right">Exposition Foot</h1>
+                <h1 class="text-right"><span class="blue">Exposition Foot</span></h1>
               </div>
 
               <!-- Expo Text -->
-              <div class="col-xs-12 col-sm-6" style="padding: 15px;">
-                <div style="background-color: white; height: 200px">
-
+              <div class="col-xs-12 col-sm-6">
+                <div class="block_small">
+                  <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
                 </div>
               </div>
 
               <!-- Expo Img -->
-              <div class="col-xs-12 col-sm-6" style="padding: 15px;">
-                <div style="background-color: white; height: 200px">
-
+              <div class="col-xs-12 col-sm-6">
+                <div class="block_small">
+                  <img src="images/expo_foot.jpg" alt="expo foot">
                 </div>
               </div>
 
+              <!-- Section Button -->
               <div class="col-xs-12">
-                <button type="button" name="button">Plus d'informations</button>
+                <a href="" class="blue second_links">Plus d'informations</a>
               </div>
 
             </div>
 
+          </div> <!-- End of .expo_foot -->
+
+        </div> <!-- End of .main_important -->
+
+        <!-- Sections' Presentation -->
+        <div class="row section_presentation">
+
+          <!-- Media Section -->
+          <div class="col-xs-12 col-sm-6 media_section">
+
+          </div>
+
+          <!-- Feedbacks + Random Section -->
+          <div class="col-xs-12 col-sm-6 feed_random">
+            <div class="row">
+
+              <!-- Feedbacks -->
+              <div class="col-xs-12 feedback_section">
+
+              </div>
+
+              <!-- Random -->
+              <div class="col-xs-12 random_section">
+
+              </div>
+
+            </div>
           </div>
 
         </div>
 
-      </div>
+      </div> <!-- End of .container-fluid -->
 
     </header>
 
