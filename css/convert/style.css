@@ -1,3 +1,9 @@
+@font-face {
+  font-family: nasalization;
+  src: url("../fonts/nasalization free.ttf"); }
+@font-face {
+  font-family: nasalization;
+  src: url("../fonts/nasalization free.ttf"); }
 .banner {
   height: 300px;
   background-image: url("../../images/banner.jpg");
@@ -6,8 +12,10 @@
   background-position: center; }
 
 .navigation {
-  background-color: #0072B9;
-  border-radius: 10px; }
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  border: none;
+  background-color: #FFFFFF; }
   .navigation li {
     margin: auto; }
     .navigation li a {
@@ -27,11 +35,21 @@
 .navbar-right {
   margin-right: 0; }
 
+.next_events {
+  background-color: #0072B9; }
+
+.expo_foot {
+  background-color: #FBDB00; }
+
 /* ----------<< Navbar Style >>---------- */
 html, body {
   height: 100%; }
 
 body {
   background-color: #DDDDDD; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 15px 0;
+  font-family: nasalization; }
 
 /*# sourceMappingURL=style.css.map */

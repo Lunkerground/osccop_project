@@ -1,5 +1,6 @@
 @import 'variables.sass'
 
+// Banner Styles
 .banner
   height: 300px
   background:
@@ -8,17 +9,20 @@
     repeat: no-repeat
     position: center
 
+// Navbar Styles
 .navigation
-  background-color: $main_color
-  border-radius: 10px
+  margin: 0
+  border-radius: 10px 10px 0 0
+  border: none
+  background-color: $white_color
 
   li
     margin: auto
-    
+
     a
       font-weight: bold
-      text-shadow: 1px 1px $font_color
-      color: $second_color !important
+      text-shadow: 1px 1px $black_color
+      color: $yellow_color !important
 
   .logo
     margin-left: 0
@@ -33,3 +37,10 @@
 
 .navbar-right
   margin-right: 0
+
+// Main Important
+.next_events
+  background-color: $blue_color
+
+.expo_foot
+  background-color: $yellow_color
