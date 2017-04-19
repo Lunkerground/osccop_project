@@ -86,6 +86,15 @@ if ($data['Membre_actif'] == 'false') {
 
       <!-- RIGHT SECTION - ADMIN CONTENTS -->
 
+      <!-- DATABASE - EVENT -->
+      <?php
+
+      include('admin/_dbevent.php');
+
+      ?>
+
+      <!-- DATABASE - MEMBERS -->
+
       <?php
 
         if (isset($_GET['page']) && $_GET['page'] == 'events') {
@@ -120,6 +129,7 @@ if ($data['Membre_actif'] == 'false') {
         }
 
       ?>
+
 
     </div>
 
