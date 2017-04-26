@@ -1,0 +1,35 @@
+@import 'variables.sass'
+
+.banner
+  height: 300px
+  background:
+    image: url('../../images/banner.jpg')
+    size: contain
+    repeat: no-repeat
+    position: center
+
+.navigation
+  background-color: $main_color
+  border-radius: 10px
+
+  li
+    margin: auto
+    
+    a
+      font-weight: bold
+      text-shadow: 1px 1px $font_color
+      color: $second_color !important
+
+  .logo
+    margin-left: 0
+
+  img
+    position: absolute
+    top: 51%
+    left: 50%
+    transform: translate(-50%, -50%)
+    height: 143px
+    width: auto
+
+.navbar-right
+  margin-right: 0

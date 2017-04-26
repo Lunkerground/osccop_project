@@ -24,11 +24,12 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <label for="typeOfSearch">Recherche par:</label>
+          <label for="typeOfSearch">Recherche par:
             <select class="typeOfSearch" name="typeOfSearch">
               <option value="jeu">Jeu</option>
               <option value="console">Console</option>
             </select>
+          </label>
         </div>
       </div>
       <div class="row">
@@ -47,6 +48,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="jeu.js"></script>
+    <script src="../js/jeu.js"></script>
   </body>
 </html>

@@ -6,6 +6,7 @@
 @import 'components/modal'
 
 @import 'pages/admin'
+@import 'pages/accueil'
 
 // -----<< Global Styles >>-----
 
@@ -19,13 +20,40 @@ html, body
 body
   background-color: $grey_color
 
+// Design for content blocks
+.content_container
+  background-color: $yellow_color
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+
 // Titles Styles
-h1, h2, h3, h4, h5, h6
-  margin: 15px 0
-  font:
-    family: $font_main
-    weight: bold
-  text-shadow: 1px 1px $black_color
+.title_container
+  padding: 10px
+  background-color: $white_color
+  border-top-left-radius: 3px
+  border-top-right-radius: 3px
+  h1, h2, h3, h4, h5, h6
+    margin: 0
+    font:
+      family: $font_main
+      weight: bold
+    text-shadow: 1px 1px $black_color
+
+// Text Styles
+.text_container
+  padding: 25px
+  background-color: $white_color
+  border-radius: 3px
+  overflow: hidden
+  p
+    margin: 0
+    font-family: $font_second
+
+// Media Styles
+.medias_container img
+  height: 100%
+  width: 100%
+  border-radius: 3px
 
 // Set font-color to "yellow"
 .yellow
@@ -38,27 +66,6 @@ h1, h2, h3, h4, h5, h6
   color: $blue_color
   &:hover
     color: $blue_color
-
-// Design for small content blocks
-.block_small
-  height: 200px
-  background-color: $white_color
-  border-radius: 3px
-  overflow: hidden
-
-  p
-    position: relative
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    max-height: 100%
-    padding: 25px
-    font-family: $font_second
-
-  img
-    height: 100%
-    width: 100%
-    object-position: 50% 50%
 
 // First design for links
 .first_links

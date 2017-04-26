@@ -45,29 +45,25 @@
 
               <!-- First Event to come -->
               <div class="col-xs-12 col-sm-6">
-                <div class="block_small">
-                  <div class="left_side">
-                    <img src="images/test_affiche.jpg" alt="affiche">
-                  </div>
-                  <div class="text-center">
-                    <h3>Les 20 ans de la Playstation</h3>
-                    <h4>Date</h4>
-                    <h5><a href="#" class="blue third_links">+ d'infos</a></h5>
-                  </div>
+                <div class="medias_container">
+                  <img src="images/test_affiche.jpg" alt="affiche">
+                </div>
+                <div class="text_container text-center">
+                  <p>Les 20 ans de la Playstation</p>
+                  <p>Date</p>
+                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
                 </div>
               </div>
 
               <!-- Second Event to come -->
-              <div class="col-xs-12 col-sm-6" class="block_small">
-                <div class="block_small">
-                  <div class="left_side">
-                    <img src="images/test_affiche.jpg" alt="affiche">
-                  </div>
-                  <div class="text-center">
-                    <h3>Title</h3>
-                    <h4>Date</h4>
-                    <h5><a href="#" class="blue third_links">+ d'infos</a></h5>
-                  </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="medias_container">
+                  <img src="images/test_affiche.jpg" alt="affiche">
+                </div>
+                <div class="text_container text-center">
+                  <p>Title</p>
+                  <p>Date</p>
+                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
                 </div>
               </div>
 
@@ -90,14 +86,14 @@
 
               <!-- Expo Text -->
               <div class="col-xs-12 col-sm-6">
-                <div class="block_small">
+                <div class="text_container">
                   <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
                 </div>
               </div>
 
               <!-- Expo Img -->
               <div class="col-xs-12 col-sm-6">
-                <div class="block_small">
+                <div class="medias_container">
                   <img src="images/expo_foot.jpg" alt="expo foot">
                 </div>
               </div>
@@ -118,7 +114,12 @@
 
           <!-- Media Section -->
           <div class="col-xs-12 col-sm-6 media_section">
+            <div class="title_container">
+              <h3>Médias</h3>
+            </div>
+            <div class="content_container">
 
+            </div>
           </div>
 
           <!-- Feedbacks + Random Section -->
@@ -127,12 +128,37 @@
 
               <!-- Feedbacks -->
               <div class="col-xs-12 feedback_section">
+                <div class="title_container">
+                  <h3>Compte-rendus</h3>
+                </div>
+                <div class="content_container">
 
+                </div>
               </div>
 
               <!-- Random -->
               <div class="col-xs-12 random_section">
-
+                <div class="title_container">
+                  <h3>Le coin Random</h3>
+                </div>
+                <div class="content_container">
+                  <div class="first_random" style="display: flex; padding: 25px">
+                    <div class="medias_container" style="width: 40%">
+                      <img src="images/dbzhd_snes.jpg" alt="">
+                    </div>
+                    <div class="text_container" style="width: 60%; margin-left: 25px">
+                      <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                    </div>
+                  </div>
+                  <div class="second_random" style="display: flex; padding: 25px">
+                    <div class="medias_container" style="width: 40%">
+                      <img src="images/gamecube.jpg" alt="">
+                    </div>
+                    <div class="text_container" style="width: 60%; margin-left: 25px">
+                      <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>

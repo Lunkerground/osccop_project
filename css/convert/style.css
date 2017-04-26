@@ -50,6 +50,32 @@
   background-color: #FBDB00; }
 
 /* ----------<< Navbar Style >>---------- */
+.media_section, .feedback_section, .random_section {
+  padding: 25px; }
+
+.next_events h1, .expo_foot h1 {
+  margin: 15px;
+  font-family: nasalization;
+  font-weight: bold;
+  text-shadow: 1px 1px #0F0F0F; }
+
+.next_events .medias_container, .next_events .text_container {
+  width: 50%;
+  height: 200px; }
+
+.expo_foot .medias_container, .expo_foot .text_container {
+  height: 200px; }
+
+.next_events .medias_container {
+  float: left; }
+  .next_events .medias_container img {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+
+.next_events .text_container {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -58,11 +84,35 @@ html, body {
 body {
   background-color: #DDDDDD; }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 15px 0;
-  font-family: nasalization;
-  font-weight: bold;
-  text-shadow: 1px 1px #0F0F0F; }
+.content_container {
+  background-color: #FBDB00;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; }
+
+.title_container {
+  padding: 10px;
+  background-color: #FFFFFF;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
+  .title_container h1, .title_container h2, .title_container h3, .title_container h4, .title_container h5, .title_container h6 {
+    margin: 0;
+    font-family: nasalization;
+    font-weight: bold;
+    text-shadow: 1px 1px #0F0F0F; }
+
+.text_container {
+  padding: 25px;
+  background-color: #FFFFFF;
+  border-radius: 3px;
+  overflow: hidden; }
+  .text_container p {
+    margin: 0;
+    font-family: roboto; }
+
+.medias_container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 3px; }
 
 .yellow, .navigation li a {
   color: #FBDB00; }
@@ -73,24 +123,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #0072B9; }
   .blue:hover {
     color: #0072B9; }
-
-.block_small {
-  height: 200px;
-  background-color: #FFFFFF;
-  border-radius: 3px;
-  overflow: hidden; }
-  .block_small p {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-height: 100%;
-    padding: 25px;
-    font-family: roboto; }
-  .block_small img {
-    height: 100%;
-    width: 100%;
-    object-position: 50% 50%; }
 
 .first_links {
   display: block;
