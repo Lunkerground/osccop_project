@@ -1,0 +1,51 @@
+@import 'variables.sass'
+
+// Banner Styles
+.banner
+  height: 260px
+  background:
+    image: url('../../images/banner.jpg')
+    size: contain
+    repeat: no-repeat
+    position: center
+
+// Navbar Styles
+.navigation
+  margin: 0
+  border-radius: 10px 10px 0 0
+  border: none
+  background-color: $white_color
+
+  ul
+    margin: 10px
+
+  li
+    width: 11em
+    padding: 0 5px
+    a
+      @extend .yellow
+
+  .logo
+    margin-left: 0
+
+  img
+    position: absolute
+    top: 51%
+    left: 50%
+    transform: translate(-50%, -50%)
+    height: 143px
+    width: auto
+
+// [Fix] Boostrap crap
+.navbar-right
+  margin-right: 0
+
+// Main Important
+.next_events
+  background-color: $blue_color
+  .left_side
+    width: 50%
+    float: left
+
+.expo_foot
+  background-color: $yellow_color
