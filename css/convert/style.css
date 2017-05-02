@@ -49,21 +49,39 @@
 .expo_foot {
   background-color: #FBDB00; }
 
+footer {
+  background-color: #0F0F0F; }
+  footer .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    footer .footer .footer_contact, footer .footer .footer_link, footer .footer .footer_copyrights, footer .footer a {
+      color: #FFFFFF; }
+    footer .footer .footer_link a {
+      font-size: 70px; }
+  footer .row {
+    margin: 0 !important; }
+
 /* ----------<< Navbar Style >>---------- */
-.media_section, .feedback_section, .random_section {
+.media_section,
+.feedback_section,
+.random_section {
   padding: 25px; }
 
-.next_events h1, .expo_foot h1 {
+.next_events h1,
+.expo_foot h1 {
   margin: 15px;
   font-family: nasalization;
   font-weight: bold;
   text-shadow: 1px 1px #0F0F0F; }
 
-.next_events .medias_container, .next_events .text_container {
+.next_events .medias_container,
+.next_events .text_container {
   width: 50%;
   height: 200px; }
 
-.expo_foot .medias_container, .expo_foot .text_container {
+.expo_foot .medias_container,
+.expo_foot .text_container {
   height: 200px; }
 
 .next_events .medias_container {
@@ -76,10 +94,44 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0; }
 
+.next_events .medias_container img,
+.expo_foot .medias_container img {
+  width: 100%;
+  height: 100%; }
+
+.media_section .content_container .tests_videos_container,
+.media_section .content_container .podcasts_container,
+.media_section .content_container .tests_written_container,
+.feedback_section .content_container,
+.random_section .content_container .first_random,
+.random_section .content_container .second_random {
+  display: flex;
+  align-items: center;
+  padding: 25px; }
+  .media_section .content_container .tests_videos_container .medias_container,
+  .media_section .content_container .podcasts_container .medias_container,
+  .media_section .content_container .tests_written_container .medias_container,
+  .feedback_section .content_container .medias_container,
+  .random_section .content_container .first_random .medias_container,
+  .random_section .content_container .second_random .medias_container {
+    width: 40%;
+    margin-right: 25px; }
+  .media_section .content_container .tests_videos_container .text_container,
+  .media_section .content_container .podcasts_container .text_container,
+  .media_section .content_container .tests_written_container .text_container,
+  .feedback_section .content_container .text_container,
+  .random_section .content_container .first_random .text_container,
+  .random_section .content_container .second_random .text_container {
+    width: 60%; }
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%; }
+
+.vcenter {
+  display: flex;
+  align-items: center; }
 
 body {
   background-color: #DDDDDD; }
@@ -110,8 +162,6 @@ body {
     font-family: roboto; }
 
 .medias_container img {
-  height: 100%;
-  width: 100%;
   border-radius: 3px; }
 
 .yellow, .navigation li a {
