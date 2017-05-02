@@ -17,7 +17,8 @@ $date = explode("/", $data["date_event"]);
 <head>
   <meta charset="utf-8">
   <title>Ajout/modification événement</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,15 +35,15 @@ $date = explode("/", $data["date_event"]);
             <h3>Ajout</h3>
           </div>
           <div class="">
-            <div class="form" action="#" method="POST" enctype="multipart/form-data">
-              <label for="name">Nom de l"événement</label>
-              <input type="text" name="name" id="name">
-              <label for="time">Date de l"événement</label>
-              <input type="date" name="time" id="time">
-              <label for="affiche">Affiche</label>
-              <input type="file" name="affiche" id="affiche">
-              <label for="presentation">Presentation</label>
-              <textarea name="presentation" rows="8" cols="40"></textarea>
+            <form class="form" id="addEventForm">
+              <label for="eventName">Nom de l"événement</label>
+              <input type="text" name="eventName" id="name">
+              <label for="eventDate">Date de l"événement</label>
+              <input type="date" name="eventDate" id="time">
+              <label for="eventPoster">Affiche</label>
+              <input type="file" name="eventPoster" id="affiche" onchange="readURL(this)">
+              <label for="eventPresentation">Presentation</label>
+              <textarea name="eventPresentation" rows="8" cols="40"></textarea>
               <fieldset>
                 <legend>Ajouter des jeux</legend>
                 <div class="row">
@@ -71,7 +72,7 @@ $date = explode("/", $data["date_event"]);
               <p>
                 <a class="button" id="addEvent">Valider l"événement </a>
               </p>
-            </div>
+            </form>
           </div>
 
           <div class="large-6 columns">
@@ -116,15 +117,26 @@ $date = explode("/", $data["date_event"]);
 
 
   </div>
-  <div class="modal" id="eventModal">
-    <h1>Awesome. I Have It.</h1>
-    <p class="lead">Your couch. It is mine.</p>
-    <p>I"m a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-
+  <div class="modal fade" id="eventModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalEventTitle"></h4>
+        </div>
+        <div class="modal-body">
+          <p id="modalEventDate"></p>
+          <p id="modalEventText"></p>
+          <img id="modalEventPoster" src="#" width="200px">
+          <p id="modalEventGames"></p>
+        </div>
+      </div>
   </div>
 
 </body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="http://localhost/osccop_project/js/jeu.js"></script>
 <script src="../js/date.js"></script>
+<script type="text/javascript" src="http://localhost/osccop_project/js/eventvalidation.js"></script>
+
 
 </html>

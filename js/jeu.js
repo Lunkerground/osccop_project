@@ -1,11 +1,10 @@
-/* jshint esversion: 6 */
 var gameData
 var NBGAMEMAXTODISPLAY = 13
 var queryOffset = 0
 var numberOfGameFound
-$(document).ready(function() {
+$(document).ready(function () {
   request('') // requete pour afficher tout les jeux par défaut
-  $('#lookingForGame').keyup(function() {
+  $('#lookingForGame').keyup(function () {
     let inputValue = $(this).val()
     queryOffset = 0
     request(inputValue)
@@ -31,21 +30,29 @@ var request = (inpVal) => {
       if (numberOfGameFound > NBGAMEMAXTODISPLAY) {
         $('#pages').html('')
         for (let p = 1; p <= Math.ceil(numberOfGameFound / NBGAMEMAXTODISPLAY); p++) {
-          $('#pages').append("<span class='pagenb'>" + p + ' </span>')
+          $('#pages').append("<a class='pagenb'>" + p + ' </a>')
         }
-        $('span.pagenb').click(function() {
+        $('a.pagenb').click(function () {
           queryOffset = $('.pagenb').index($(this)) * NBGAMEMAXTODISPLAY
           $('#gamelist').html('')
-          resultDisplay(gameData, queryOffset, NBGAMEMAXTODISPLAY)
+          resultDisplay(
+            gameData,
+            queryOffset,
+            NBGAMEMAXTODISPLAY
+          )
         })
       } else {
         $('#pages').html('')
-        resultDisplay(gameData, queryOffset, NBGAMEMAXTODISPLAY)
+        resultDisplay(
+          gameData,
+          queryOffset,
+          NBGAMEMAXTODISPLAY
+        )
       }
       // affiche les jeux correspondant à la recherche
       resultDisplay(gameData, queryOffset, NBGAMEMAXTODISPLAY)
     },
-    error: function(request, status, error) {
+    error: function (request, status, error) {
       console.log(error)
     }
   })
@@ -57,7 +64,7 @@ var resultDisplay = (data, offset, limit) => {
   if (numberOfGameFound === 0) {
     $('#nbGame').append('<strong>Aucun</strong> jeu trouvé')
   } else if (numberOfGameFound === 1) {
-    $('#nbGame').append('<strong>' + numberOfGameFound + '</strong> jeu trouvé')
+    $('#nbGame').append('<strong>1</strong> jeu trouvé')
   } else {
     $('#nbGame').append('<strong>' + numberOfGameFound + '</strong> jeux trouvés')
   }
@@ -66,15 +73,15 @@ var resultDisplay = (data, offset, limit) => {
   }
   // affiche les jeux
   for (let i = offset; i <= (offset + limitOfGame); i++) {
-    $('#gamelist').append('<div class="game" id="G' + data[i].id_jeu + '">' + data[i].nom_jeu + ' <small>' + data[i].nom_console + '</small> <span class="selectGame">+</span></div>')
+    $('#gamelist').append('<div class="game" id="G' + data[i].id_jeu + '">' + data[i].nom_jeu + ' <small>' + data[i].nom_console + '</small> <a class="selectGame">+</a></div>')
   }
   // Ajout de jeu dans la selection
-  $('span.selectGame').click(function() {
+  $('a.selectGame').click(function () {
     let gIndex = $('.game').index($(this).parents())
     let gId = $(this).parents().attr('id').substr(1)
     // vérfie si le jeu fait déjà parti de la sélection
     let alreadySelected = false
-    $('.choosedgame .game').each(function() {
+    $('.choosedgame .game').each(function () {
       let eId = $(this).attr('id').substr(1)
       if (eId === gId) {
         alreadySelected = true
@@ -82,16 +89,28 @@ var resultDisplay = (data, offset, limit) => {
     })
     // s'il ne fait pas partie de la selection, il est ajouté
     if (!alreadySelected) {
-      selectedDisplay(gameData[(gIndex + queryOffset)].id_jeu, gameData[(gIndex + queryOffset)].nom_jeu, gameData[(gIndex + queryOffset)].nom_console)
+      selectedDisplay(
+        gameData[(gIndex + queryOffset)].id_jeu,
+        gameData[(gIndex + queryOffset)].nom_jeu,
+        gameData[(gIndex + queryOffset)].nom_console
+      )
     }
     // retirer un jeu de la liste des selectionnés
-    $('span.removeGame').click(function() {
+    $('a.removeGame').click(function () {
       let cId = $(this).parents().attr('id')
       $('#' + cId).remove()
     })
   })
 }
-
+var readURL = (input) => {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader()
+    reader.onload = function (e) {
+      $('#modalEventPoster').attr('src', e.target.result)
+    }
+    reader.readAsDataURL(input.files[0])
+  }
+}
 var selectedDisplay = (gameId, gameName, consoleName) => {
-  $('.choosedgame').append('<div class="game" id="C' + gameId + '">' + gameName + ' <small>' + consoleName + '</small> <span  class="removeGame">-</span></div>')
+  $('.choosedgame').append('<div class="game" id="C' + gameId + '"><p class="gameName">' + gameName + ' <small>' + consoleName + '</small></p> <a  class="removeGame">-</a></div>')
 }
