@@ -6,12 +6,7 @@ $date = date('d-m-Y', strtotime($_POST['eventDate']));
 $affiche = isset($_FILES['eventPoster']['name'])? $_FILES['eventPoster']['name']: "";
 $presentation = isset($_POST['eventPresentation'])? $_POST['eventPresentation']: "";
 $games = isset($_POST['games'])? explode(",",$_POST['games']):"";
-echo $titre."<br>";
-echo $date."<br>";
-echo $presentation."<br>";
-echo $affiche."<br>";
-var_dump($games);
-// PENSER AU JEUX AJOUTER
+
 
 $upload = move_uploaded_file($_FILES['eventPoster']['tmp_name'], $_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/affiche/$affiche") or die(" Votre image n'a pas été uploadé correctement ".$_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/affiche/$affiche");
 
@@ -30,4 +25,6 @@ foreach ($games as $idGame) {
   $qryGame->execute();
 }
     $req->closeCursor();
+    $qryGame->closeCursor();
+    $cnx = null;
  ?>
