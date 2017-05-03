@@ -16,11 +16,10 @@
         console.log(titreDataAll);
         for (var i = 0; i < titreDataAll.length; i++) {
           $('#TEST').append('<li id="' + titreDataAll[i].id_event +
-            '"> <a href="" data-toggle="modal" data-target="">' + titreDataAll[i].titre_event +
-            '</a> </li>');
+            '"> ' + titreDataAll[i].titre_event +
+            '<a href="?page=events&event=' + titreDataAll[i].id_event + '" data-toggle="modal" data-target=""><i class="fa fa-wrench" aria-hidden="true"></i></a> </li>');
           $('#idArticleSuppr').val(titreDataAll[i].id_event);
         }
       }
     });
   });
-

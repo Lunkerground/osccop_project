@@ -101,6 +101,32 @@ $date = explode("/", $data["date_event"]);
                 ?>
               </select>
         <ul id="TEST"></ul>
+        <?php
+
+        $event = isset($_GET['event'])? $_GET['event']: '';
+
+        $res2 = "SELECT * FROM evenement WHERE id_event  = '$event'";
+
+        $data2 = $cnx->prepare($res2);
+        $data2->execute();
+        $data2 = $data2->fetch(PDO::FETCH_ASSOC);
+
+        if ($event){
+
+        ?>
+          <div class="form-group col-lg-6">
+            <label for="eventName">Nom de l"événement</label>
+              <input class="form-control input-sm " type="text" name="eventName" id="name" value= "<?php echo $data2['titre_event']?>" >
+            <label for="eventDate">Date de l"événement</label>
+              <input class="form-control" type="date" name="eventDate" id="time">
+            <label for="eventPoster">Affiche</label>
+              <input class="form-control" type="file" name="eventPoster" id="affiche" onchange="readURL(this)" value="<?php echo 'images/upload/'.$data2['img_event'] ?>">
+            <label for="eventPresentation">Presentation</label>
+              <textarea name="eventPresentation" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
+          </div>
+        <?php
+      }
+        ?>
       </div>
       </div>
 
