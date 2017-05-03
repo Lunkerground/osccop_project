@@ -26,10 +26,10 @@ $date = explode("/", $data["date_event"]);
         <div class="">
           <form class="form" id="addEventForm">
             <div class="row">
-              <div class="form-group col-lg-6">
-                <label for="eventName">Nom de l"événement</label>
+              <div class="form-group col-lg-12">
+                <label for="eventName">Nom de l'événement</label>
                   <input class="form-control input-sm " type="text" name="eventName" id="name">
-                <label for="eventDate">Date de l"événement</label>
+                <label for="eventDate">Date de l'événement</label>
                   <input class="form-control" type="date" name="eventDate" id="time">
                 <label for="eventPoster">Affiche</label>
                   <input class="form-control" type="file" name="eventPoster" id="affiche" onchange="readURL(this)">
@@ -75,7 +75,7 @@ $date = explode("/", $data["date_event"]);
 
             <h3>Modification / Suppression</h3>
 
-          <select class="col-sm-6 " name="mois" id="mois">
+          <select class="col-sm-6" name="mois" id="mois">
                 <option value="" selected>Selectionner un mois ...</option>
                 <option value="01">Janvier</option>
                 <option value="02">Fevrier</option>
@@ -114,15 +114,15 @@ $date = explode("/", $data["date_event"]);
         if ($event){
 
         ?>
-          <div class="form-group col-lg-6">
-            <label for="eventName">Nom de l"événement</label>
+          <div class="form-group col-lg-12">
+            <label for="eventName">Nom de l'événement</label>
               <input class="form-control input-sm " type="text" name="eventName" id="name" value= "<?php echo $data2['titre_event']?>" >
-            <label for="eventDate">Date de l"événement</label>
+            <label for="eventDate">Date de l'événement</label>
               <input class="form-control" type="date" name="eventDate" id="time">
             <label for="eventPoster">Affiche</label>
               <input class="form-control" type="file" name="eventPoster" id="affiche" onchange="readURL(this)" value="<?php echo 'images/upload/'.$data2['img_event'] ?>">
             <label for="eventPresentation">Presentation</label>
-              <textarea name="eventPresentation" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
+              <textarea name="eventPresentationModif" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
           </div>
         <?php
       }
@@ -154,3 +154,10 @@ $date = explode("/", $data["date_event"]);
 
 <script src="http://localhost/osccop_project/js/jeu.js"></script>
 <script src="../js/date.js"></script>
+<script>
+    CKEDITOR.replace( 'eventPresentation' );
+</script>
+
+<script>
+    CKEDITOR.replace( 'eventPresentationModif' );
+</script>
