@@ -11,76 +11,71 @@ $data = $data->fetch(PDO::FETCH_ASSOC);
 $date = explode("/", $data["date_event"]);
 
 ?>
-<!DOCTYPE html>
-<html>
+<div class="" style="border: 1px black solid">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12  header_section">
+      <h1>Evenement</h1>
+    </div>
 
-<head>
-  <meta charset="utf-8">
-  <title>Ajout/modification événement</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-</head>
 
-<body>
-  <div class="small-10 columns" style="border: 1px black solid">
-    <div class="row expanded">
-      <div class="small-12 columns header_section">
-        <h1>Evenement</h1>
-      </div>
 
-      <div class="row expanded">
+      <div class="col-sm-6 col-lg-6 ">
+        <div class="section">
+          <h3>Ajout</h3>
+        </div>
+        <div class="">
+          <form class="form" id="addEventForm">
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="eventName">Nom de l"événement</label>
+                  <input class="form-control input-sm " type="text" name="eventName" id="name">
+                <label for="eventDate">Date de l"événement</label>
+                  <input class="form-control" type="date" name="eventDate" id="time">
+                <label for="eventPoster">Affiche</label>
+                  <input class="form-control" type="file" name="eventPoster" id="affiche" onchange="readURL(this)">
+                <label for="eventPresentation">Presentation</label>
+                  <textarea name="eventPresentation" rows="8" cols="44"></textarea>
+              </div>
+              <div class="col-lg-6">
 
-        <div class="small-6 large-6 columns">
-          <div class="section">
-            <h3>Ajout</h3>
+  <img class="modalEventPoster" src="#" width="100%">
+              </div>
           </div>
-          <div class="">
-            <div class="form" action="#" method="POST" enctype="multipart/form-data">
-              <label for="name">Nom de l"événement</label>
-              <input type="text" name="name" id="name">
-              <label for="time">Date de l"événement</label>
-              <input type="date" name="time" id="time">
-              <label for="affiche">Affiche</label>
-              <input type="file" name="affiche" id="affiche">
-              <label for="presentation">Presentation</label>
-              <textarea name="presentation" rows="8" cols="40"></textarea>
-              <fieldset>
-                <legend>Ajouter des jeux</legend>
-                <div class="row">
-
-                  <div class="large-6 columns">
-                    <label for="typeOfSearch">Recherche par:
-                        <select class="typeOfSearch" name="typeOfSearch">
-                          <option value="jeu">Jeu</option>
-                          <option value="console">Console</option>
-                        </select>
-                      </label>
-                    <label for="lookingForGame">recherche de jeux
-                        <input type="text" id="lookingForGame" class="form-control" placeholder="recherche de jeu">
-                      </label>
-                  </div>
+              <h4>Ajouter des jeux</h4>
+              <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                  <label for="typeOfSearch">Recherche par:</label>
+                    <select class="typeOfSearch" name="typeOfSearch">
+                      <option value="jeu">Jeu</option>
+                      <option value="console">Console</option>
+                    </select>
+                  <div class="form-group">
+                  <label for="lookingForGame">recherche de jeux</label>
+                  <input class="form-control" type="text" id="lookingForGame" class="form-control" placeholder="recherche de jeu">
                 </div>
-                <div class="row">
-                  <div class="large-6 columns">
-                    <div id="nbGame"></div>
-                    <div id="pages"></div>
-                    <div id="gamelist"></div>
-                  </div>
-                  <div class="choosedgame large-6 columns"></div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 ">
+                  <div id="nbGame"></div>
+                  <div id="pages"></div>
                 </div>
-              </fieldset>
-              <p>
-                <a class="button" id="addEvent">Valider l"événement </a>
-              </p>
-            </div>
-          </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6" id="gamelist"></div>
+                <div class="choosedgame col-lg-6 "></div>
+              </div>
+            <p>
+              <a class="btn btn-default" id="addEvent">Valider l"événement </a>
+            </p>
+          </form>
+        </div>
+</div>
+        <div class="col-lg-6 ">
 
-          <div class="large-6 columns">
+            <h3>Modification / Suppression</h3>
 
-            <div class="section">
-              <h3>Modification / Suppression</h3>
-            </div>
-
-            <select class="small-6 columns" name="mois" id="mois">
+          <select class="col-sm-6 " name="mois" id="mois">
                 <option value="" selected>Selectionner un mois ...</option>
                 <option value="01">Janvier</option>
                 <option value="02">Fevrier</option>
@@ -96,7 +91,7 @@ $date = explode("/", $data["date_event"]);
                 <option value="12">Décembre</option>
               </select>
 
-            <select class="annee small-6 columns" name="annee" id="annee">
+          <select class="annee col-sm-6 " name="annee" id="annee">
 
                 <option value="" selected>Selectionner une année ...</option>
               <?php
@@ -105,26 +100,31 @@ $date = explode("/", $data["date_event"]);
                 }
                 ?>
               </select>
-
-          </div>
-
-          <ul id="TEST"></ul>
-
-        </div>
+        <ul id="TEST"></ul>
       </div>
+      </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="eventModal" role="dialog">
+  <div class="modal-dialog" style="background-color:white;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title" id="modalEventTitle"></h4>
     </div>
-
-
+    <div class="modal-body">
+      <p id="modalEventDate"></p>
+      <p id="modalEventText"></p>
+      <img class="modalEventPoster" src="#" width="200px">
+      <div id="modalEventGames"></div>
+    </div>
+    <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>
+        </div>
   </div>
-  <div class="modal" id="eventModal">
-    <h1>Awesome. I Have It.</h1>
-    <p class="lead">Your couch. It is mine.</p>
-    <p>I"m a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+</div>
 
-  </div>
-
-</body>
 <script src="http://localhost/osccop_project/js/jeu.js"></script>
 <script src="../js/date.js"></script>
-
-</html>
