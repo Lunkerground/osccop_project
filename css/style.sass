@@ -7,6 +7,7 @@
 
 @import 'pages/admin'
 @import 'pages/accueil'
+@import 'pages/model'
 
 // -----<< Global Styles >>-----
 
@@ -15,11 +16,6 @@ html, body
   margin: 0
   padding: 0
   height: 100%
-
-// Vertical Centering
-.vcenter
-  display: flex
-  align-items: center
 
 // Page Background
 body
@@ -60,9 +56,9 @@ body
 
 // Set font-color to "yellow"
 .yellow
-  color: $yellow_color
+  color: $yellow_color !important
   &:hover
-    color: $yellow_color
+    color: $yellow_color !important
 
 // Set font-color to "blue"
 .blue
@@ -79,6 +75,9 @@ body
   text-align: center
   font-family: $font_main
   text-shadow: 1px 1px $black_color
+  transition: background-color 1s
+  &:hover
+    background-color: darken($blue_color, 10%) !important
 
 // Second design for links
 .second_links

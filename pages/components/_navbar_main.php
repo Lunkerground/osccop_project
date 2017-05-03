@@ -17,8 +17,8 @@
 
       <ul class="nav navbar-nav navbar-left">
         <li><a href="#" class="yellow first_links">Accueil</a></li>
-        <li><a href="#" class="yellow first_links">Compte-rendus</a></li>
-        <li><a href="#" class="yellow first_links">Médias</a></li>
+        <li><a href="pages/feedbacks.php" class="yellow first_links">Compte-rendus</a></li>
+        <li><a href="pages/model.php" class="yellow first_links">Médias</a></li>
       </ul>
 
       <div class="navbar-brand logo" href="#">
@@ -26,9 +26,9 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="yellow first_links">Presse</a></li>
-        <li><a href="#" class="yellow first_links">Présentation</a></li>
-        <li><a href="#" class="yellow first_links">Contact</a></li>
+        <li><a href="pages/model.php" class="yellow first_links">Presse</a></li>
+        <li><a href="pages/model.php" class="yellow first_links">Présentation</a></li>
+        <li><a href="pages/model.php" class="yellow first_links">Contact</a></li>
       </ul>
 
     </div>
