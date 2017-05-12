@@ -30,12 +30,10 @@ $date = explode("/", $data["date_event"]);
                 <input class="form-control" type="date" name="eventDate" required>
                 <label for="eventPoster">Affiche</label>
                 <input class="form-control" type="file" name="eventPoster" onchange="readURL(this)"  accept="image/*">
-		            <label for="eventPresentation">Presentation</label>
-                <textarea class="form-control" name="eventPresentation" rows="8"></textarea>
+                <label for="eventPresentation">Presentation</label>
+                <textarea class="form-control" name="eventPresentation" id="eventPresentation" rows="8"></textarea>
               </div>
-              <div class="col-lg-6">
-                <img class="modalEventPoster" src="#" width="100%">
-              </div>
+
             </div>
           </form>
             <h4>Ajouter des jeux</h4>
@@ -115,14 +113,21 @@ $date = explode("/", $data["date_event"]);
         ?>
 
           <div class="form-group col-lg-12">
-            <label for="eventName">Nom de l'événement</label>
-              <input class="form-control input-sm " type="text" name="eventName" id="name" value= "<?php echo $data2['titre_event']?>" >
-            <label for="eventDate">Date de l'événement</label>
-              <input class="form-control" type="date" name="eventDate" id="time">
-            <label for="eventPoster">Affiche</label>
-              <input class="form-control" type="file" name="eventPoster" id="affiche" onchange="readURL(this)" value="<?php echo 'images/upload/'.$data2['img_event'] ?>">
-            <label for="eventPresentation">Presentation</label>
-              <textarea name="eventPresentationModif" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
+
+              <form id="modEventForm" enctype="multipart/form-data">
+                  <label for="modEventNameModif">Nom de l'événement</label>
+                  <input class="form-control input-sm " type="text" name="modEventNameModif" id="name" value= "<?php echo $data2['titre_event']?>" >
+                  <label for="modEventDateModif">Date de l'événement</label>
+                  <input class="form-control" type="date" name="modEventDateModif" id="time">
+                  <label for="modEventPoster">Affiche</label>
+                  <input class="form-control" type="file" name="modEventPoster" id="affiche" onchange="readURL(this)" value="<?php echo 'images/upload/'.$data2['img_event'] ?>">
+                  <label for="modEventPresentation">Presentation</label>
+                  <textarea name="eventPresentationModif" id="eventPresentationModif" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
+                  <p>
+                      <a class="btn btn-default" id="modEvent">Valider l'événement </a>
+                  </p>
+              </form>
+
           </div>
         <?php
       }
@@ -152,6 +157,26 @@ $date = explode("/", $data["date_event"]);
   </div>
 </div>
 
+<!-- Modal Modif -->
+<div class="modal fade" id="eventModalModif" role="dialog">
+    <div class="modal-dialog" style="background-color:white;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" id="modalEventTitleModif"></h4>
+        </div>
+        <div class="modal-body">
+            <p id="modalEventDateModif"></p>
+            <p id="modalEventTextModif"></p>
+            <img class="modalEventPoster" src="#" width="200px">
+            <div id="modalEventGamesModif"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" id="validate" class="btn btn-default">Valider</button>
+        </div>
+    </div>
+</div>
+
 <!-- Messagerie! -->
 <div class="modal fade" id="messageModal" role="dialog">
   <div class="modal-dialog" style="background-color:white;">
@@ -171,12 +196,34 @@ $date = explode("/", $data["date_event"]);
 
 
 <script src="http://localhost/osccop_project/js/jeu.js"></script>
+<script src="http://localhost/osccop_project/js/script.js"></script>
+
 <script src="../js/date.js"></script>
-<script>
-    CKEDITOR.replace( 'eventPresentation' );
-</script>
+<script src="../js/ckeditor/ckeditor.js"></script>
+
 
 <script>
+
+    CKEDITOR.replace( 'eventPresentation' );
+
+    timer = setInterval(updateDiv,100);
+    function updateDiv(){
+        var editorText = CKEDITOR.instances.eventPresentation.getData();
+        $('#modalEventText').html(editorText);
+    }
+
+</script>
+
+
+<script>
+
     CKEDITOR.replace( 'eventPresentationModif' );
+
+    timer = setInterval(updateDivMod,100);
+    function updateDivMod(){
+        var editorTextModif = CKEDITOR.instances.eventPresentationModif.getData();
+        $('#modalEventTextModif').html(editorTextModif);
+    }
+
 </script>
     
