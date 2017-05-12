@@ -23,7 +23,7 @@
 
       <!-- Banner -->
       <div class="banner">
-
+        <img src="images/banner.jpg" alt="Bannière" class="img-responsive">
       </div>
 
       <!-- Navbar -->
@@ -40,29 +40,31 @@
 
               <!-- Section Title -->
               <div class="col-xs-12">
-                <h1 class="text-left"><span class="yellow">Évènements à venir</span></h1>
+                <h3 class="text-center"><span class="yellow">Évènements à venir</span></h3>
               </div>
 
               <!-- First Event to come -->
               <div class="col-xs-12 col-sm-6">
 
                 <div class="medias_container">
-                  <img src="images/test_affiche.jpg" alt="affiche">
+                  <img src="images/test_affiche.jpg" alt="affiche" class="img-responsive">
                 </div>
 
                 <div class="text_container text-center">
                   <p>Les 20 ans de la Playstation</p>
+                  <hr>
                   <p>Date</p>
+                  <hr>
                   <p><a href="#" class="blue third_links">+ d'infos</a></p>
                 </div>
 
               </div>
 
               <!-- Second Event to come -->
-              <div class="col-xs-12 col-sm-6">
+              <div class="hidden-xs col-sm-6">
 
                 <div class="medias_container">
-                  <img src="images/test_affiche.jpg" alt="affiche">
+                  <img src="images/test_affiche.jpg" alt="affiche" class="img-responsive">
                 </div>
 
                 <div class="text_container text-center">
@@ -87,7 +89,7 @@
 
               <!-- Section Title -->
               <div class="col-xs-12">
-                <h1 class="text-right"><span class="blue">Exposition Foot</span></h1>
+                <h3 class="text-center"><span class="blue">Exposition Foot</span></h3>
               </div>
 
               <!-- Expo Text -->
@@ -103,7 +105,7 @@
               <div class="col-xs-12 col-sm-6">
 
                 <div class="medias_container">
-                  <img src="images/expo_foot.jpg" alt="expo foot">
+                  <img src="images/expo_foot.jpg" alt="expo foot" class="img-responsive">
                 </div>
 
               </div>

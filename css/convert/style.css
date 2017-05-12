@@ -10,13 +10,6 @@
 @font-face {
   font-family: roboto;
   src: url("../fonts/Roboto-Regular.ttf"); }
-.banner {
-  height: 260px;
-  background-image: url("../../images/banner.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; }
-
 .navigation {
   margin: 0;
   border-radius: 10px 10px 0 0;
@@ -49,23 +42,7 @@
 .expo_foot {
   background-color: #FBDB00; }
 
-footer {
-  background-color: #0F0F0F; }
-  footer .footer_contact, footer .footer_link, footer .footer_copyrights, footer a {
-    color: #FFFFFF; }
-  footer .footer_link a {
-    font-size: 70px; }
-  footer .row {
-    margin: 0 !important; }
-
-/* ----------<< Navbar Style >>---------- */
-.media_section,
-.feedback_section,
-.random_section {
-  padding: 25px; }
-
-.next_events h1,
-.expo_foot h1 {
+.next_events h1, .next_events h2, .next_events h3, .next_events h4, .next_events h5, .next_events h6, .expo_foot h1, .expo_foot h2, .expo_foot h3, .expo_foot h4, .expo_foot h5, .expo_foot h6 {
   margin: 15px;
   font-family: nasalization;
   font-weight: bold;
@@ -73,12 +50,12 @@ footer {
 
 .next_events .medias_container,
 .next_events .text_container {
-  width: 50%;
-  height: 200px; }
+  width: 46vw;
+  height: 40vh; }
 
 .expo_foot .medias_container,
 .expo_foot .text_container {
-  height: 200px; }
+  height: 40vh; }
 
 .next_events .medias_container {
   float: left; }
@@ -94,6 +71,21 @@ footer {
 .expo_foot .medias_container img {
   width: 100%;
   height: 100%; }
+
+footer {
+  background-color: #0F0F0F; }
+  footer .footer_contact, footer .footer_link, footer .footer_copyrights, footer a {
+    color: #FFFFFF; }
+  footer .footer_link a {
+    font-size: 70px; }
+  footer .row {
+    margin: 0 !important; }
+
+/* ----------<< Navbar Style >>---------- */
+.media_section,
+.feedback_section,
+.random_section {
+  padding: 25px; }
 
 .media_section .content_container .tests_videos_container,
 .media_section .content_container .podcasts_container,
@@ -119,6 +111,16 @@ footer {
   .random_section .content_container .first_random .text_container,
   .random_section .content_container .second_random .text_container {
     width: 60%; }
+
+.sorting_container {
+  padding: 25px;
+  background-color: #0072B9;
+  font-family: nasalization;
+  text-shadow: 1px 1px #0F0F0F; }
+  .sorting_container form .form-group * {
+    margin: 0 25px; }
+  .sorting_container form .form-control {
+    width: 200px; }
 
 html, body {
   margin: 0;
