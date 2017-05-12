@@ -108,6 +108,8 @@ $date = explode("/", $data["date_event"]);
         $data2->execute();
         $data2 = $data2->fetch(PDO::FETCH_ASSOC);
 
+        $date = explode("/", $data2['date_event']);
+
         if ($event){
 
         ?>
@@ -118,9 +120,9 @@ $date = explode("/", $data["date_event"]);
                   <label for="modEventNameModif">Nom de l'événement</label>
                   <input class="form-control input-sm " type="text" name="modEventNameModif" id="name" value= "<?php echo $data2['titre_event']?>" >
                   <label for="modEventDateModif">Date de l'événement</label>
-                  <input class="form-control" type="date" name="modEventDateModif" id="time">
+                  <input class="form-control" type="date" name="modEventDateModif" id="time" value="<?php echo $date[2]."-".$date[1]."-".$date[0] ?>">
                   <label for="modEventPoster">Affiche</label>
-                  <input class="form-control" type="file" name="modEventPoster" id="affiche" onchange="readURL(this)" value="<?php echo 'images/upload/'.$data2['img_event'] ?>">
+                  <input class="form-control" type="file" name="modEventPoster" id="affiche" onchange="readURL(this)">
                   <label for="modEventPresentation">Presentation</label>
                   <textarea name="eventPresentationModif" id="eventPresentationModif" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
                   <p>
@@ -226,4 +228,3 @@ $date = explode("/", $data["date_event"]);
     }
 
 </script>
-    
