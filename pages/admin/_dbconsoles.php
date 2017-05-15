@@ -10,8 +10,8 @@
       <div class="section">
         <h3>Ajout</h3>
       </div>
-      <div class="">
-        <form class="" action="" method="" enctype="multipart/form-data">
+      <div class="addGame">
+        <form class="" method="Post" enctype="multipart/form-data">
           <label for="name_console">Nom</label>
           <input type="text" name="name_console" id="name_console">
           <label for="image_console">Image</label>
@@ -25,9 +25,13 @@
         <h3>Modification / Suppression</h3>
       </div>
       <div class="">
+        <label for="search">Rechercher</label>
+        <input type="text" name="search" id="search">
+        <div class="pagination">
+
+        </div>
         <form class="" action="" method="" enctype="multipart/form-data">
-          <label for="search">Rechercher</label>
-          <input type="text" name="search" id="search">
+
           <label for="name_console">Nom</label>
           <input type="text" name="name_console" id="name_console">
           <label for="image_console">Image</label>

@@ -106,6 +106,9 @@ if ($data['Membre_actif'] == 'false') {
             } elseif (isset($_GET['page']) && $_GET['page'] == 'dbconsoles') {
 
               // DATABASE - CONSOLES
+              include 'admin/_dbconsoles.php';
+
+            } elseif (isset($_GET['page']) && $_GET['page'] == 'dbpodcast') {
 
               // DATABASE - PODCASTS
               include('admin/_dbpodcasts.php');
