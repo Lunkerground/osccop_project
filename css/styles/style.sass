@@ -42,12 +42,13 @@ body
 
 // Text Styles
 .text_container
-  padding: 25px
+  padding: 15px
   background-color: $white_color
   border-radius: 3px
   overflow: hidden
   p
     margin: 0
+    font-size: $font_size * 0.9
     font-family: $font_second
 
 // Media Styles
@@ -68,21 +69,20 @@ body
 
 // First design for links
 .first_links
-  display: block
-  width: 100%
   background-color: $blue_color
   border-radius: 3px
   text-align: center
   font-family: $font_main
   text-shadow: 1px 1px $black_color
-  transition: background-color 1s
+  transition: background-color 1s ease, transform 0.3s ease
   &:hover
-    background-color: darken($blue_color, 10%) !important
+    background-color: lighten($blue_color, 10%) !important
+    transform: scale(1.1)
 
 // Second design for links
 .second_links
   display: block
-  width: 30%
+  width: 25vw
   padding: 10px
   margin: 15px auto
   background-color: $white_color
@@ -90,7 +90,9 @@ body
   text-align: center
   font-family: $font_main
   text-shadow: 1px 1px $black_color
+  transition: transform 0.3s ease
   &:hover
+    transform: scale(1.1)
     text-decoration: none
 
 // Third design for links

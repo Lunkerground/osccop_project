@@ -1,0 +1,56 @@
+// -----<< Fonts >>-----
+
+@font-face
+  font-family: nasalization
+  src: url('../../fonts/nasalization free.ttf')
+
+@font-face
+  font-family: roboto
+  src: url('../../fonts/Roboto-Regular.ttf')
+
+$font_size: 14px
+
+$font_main: nasalization
+$font_second: roboto
+
+// -----<< Colors >>-----
+
+$blue_color: #0072B9
+$yellow_color: #FBDB00
+$white_color: #FFFFFF
+$grey_color: #DDDDDD
+$black_color: #0F0F0F
+
+// -----<< Mixins >>-----
+
+=headings
+  h1, h2, h3, h4, h5, h6
+    @content
+
+
+$break-sm: 'min-width: 768px'
+$break-md: 'min-width: 992px'
+$break-lg: 'min-width: 1200px'
+
+$portrait: 'orientation: portrait'
+$landscape: 'orientation: landscape'
+
+=respond-to($media)
+  @if $media == sm-portrait
+    @media only screen and ($portrait) and ($break-sm)
+      @content
+  @else if $media == sm-landscape
+    @media only screen and ($landscape) and ($break-sm)
+      @content
+  @else if $media == md-portrait
+    @media only screen and ($portrait) and ($break-md)
+      @content
+  @else if $media == md-landscape
+    @media only screen and ($landscape) and ($break-md)
+      @content
+  @else if $media == lg-portrait
+    @media only screen and ($portrait) and ($break-lg)
+      @content
+  @else if $media == lg-landscape
+    @media only screen and ($landscape) and ($break-lg)
+      @content

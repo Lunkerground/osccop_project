@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/convert/style.css">
+    <link rel="stylesheet" href="css/styles/convert/style.css">
 
   </head>
   <body>
@@ -23,10 +23,9 @@
 
       <!-- Banner -->
       <div class="banner">
-        <img src="images/banner.jpg" alt="Bannière" class="img-responsive">
+        <img src="css/images/banner.jpg" alt="Bannière" class="img-responsive">
       </div>
 
-      <!-- Navbar -->
       <?php include 'pages/components/_navbar_main.php' ?>
 
       <div class="container-fluid">
@@ -35,23 +34,23 @@
         <div class="row main_important">
 
           <!-- Next Events to come -->
-          <div class="col-xs-12 col-sm-6 next_events">
+          <div class="col-xs-12 col-sm-6 next_events headerHeight" style="display: flex; flex-direction: column; justify-content: space-between">
             <div class="row">
 
               <!-- Section Title -->
               <div class="col-xs-12">
-                <h3 class="text-center"><span class="yellow">Évènements à venir</span></h3>
+                <h3 class="text-left"><span class="yellow">Évènements à venir</span></h3>
               </div>
 
               <!-- First Event to come -->
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-xs-12 col-sm-6 text_container eventHeight">
 
                 <div class="medias_container">
-                  <img src="images/test_affiche.jpg" alt="affiche" class="img-responsive">
+                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
                 </div>
 
-                <div class="text_container text-center">
-                  <p>Les 20 ans de la Playstation</p>
+                <div class="text-center">
+                  <p><strong>Les 20 ans de la Playstation</strong></p>
                   <hr>
                   <p>Date</p>
                   <hr>
@@ -61,15 +60,17 @@
               </div>
 
               <!-- Second Event to come -->
-              <div class="hidden-xs col-sm-6">
+              <div class="hidden-xs col-sm-6 text_container eventHeight">
 
                 <div class="medias_container">
-                  <img src="images/test_affiche.jpg" alt="affiche" class="img-responsive">
+                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
                 </div>
 
-                <div class="text_container text-center">
-                  <p>Title</p>
+                <div class="text-center">
+                  <p><strong>Title</strong></p>
+                  <hr>
                   <p>Date</p>
+                  <hr>
                   <p><a href="#" class="blue third_links">+ d'infos</a></p>
                 </div>
 
@@ -84,28 +85,24 @@
           </div> <!-- End of .next_events -->
 
           <!-- Football Exposition -->
-          <div class="col-xs-12 col-sm-6 expo_foot">
+          <div class="col-xs-12 col-sm-6 expo_foot headerHeight" style="display: flex; flex-direction: column; justify-content: space-between">
             <div class="row">
 
               <!-- Section Title -->
               <div class="col-xs-12">
-                <h3 class="text-center"><span class="blue">Exposition Foot</span></h3>
+                <h3 class="text-right"><span class="blue">Exposition Foot</span></h3>
               </div>
 
               <!-- Expo Text -->
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-xs-12" style="display:flex; align-items:center">
 
-                <div class="text_container">
-                  <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                <div class="text_container" style="margin-right: 15px">
+                  <p class="text-justify">L’émergence ici c’est l’émulsion, c’est pas l’immersion donc le rédynamisme de l'orthodoxisation tend à porter d'avis sur ce qu'on appelle la renaissance africaine dans la sous-régionalité, mais oui.</p>
                 </div>
 
-              </div>
-
-              <!-- Expo Img -->
-              <div class="col-xs-12 col-sm-6">
-
+                <!-- Expo Img -->
                 <div class="medias_container">
-                  <img src="images/expo_foot.jpg" alt="expo foot" class="img-responsive">
+                  <img src="css/images/expo_foot.jpg" alt="expo foot" class="img-responsive">
                 </div>
 
               </div>
@@ -131,7 +128,7 @@
       <div class="row section_presentation">
 
         <!-- Media Section -->
-        <div class="col-xs-12 col-sm-6 media_section">
+        <div class="col-xs-12 col-sm-6 media_section contentHeight">
 
           <div class="title_container">
             <h3>Médias</h3>
@@ -142,14 +139,14 @@
             <div class="tests_videos_container">
 
               <div class="medias_container">
-                <img src="images/dbzhd_snes.jpg" alt="" class="img-responsive">
+                <img src="css/images/dbzhd_snes.jpg" alt="" class="img-responsive">
               </div>
 
               <div class="text_container">
                 <div class="title_container">
                   <h3>Title</h3>
                 </div>
-                <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                <p class="text-justify">Imbiber, porter la congolexicomatisation inter-continentaliste vise à cadrer mes frères propres avec la formule 1+(2x5), bonnes fêtes.</p>
               </div>
 
             </div> <!-- End of .tests_videos_container -->
@@ -157,14 +154,14 @@
             <div class="podcasts_container">
 
               <div class="medias_container">
-                <img src="images/dbzhd_snes.jpg" alt="" class="img-responsive">
+                <img src="css/images/dbzhd_snes.jpg" alt="" class="img-responsive">
               </div>
 
               <div class="text_container">
                 <div class="title_container">
                   <h3>Title</h3>
                 </div>
-                <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                <p class="text-justify"> Chapitre abstrait 3 du conpendium : la réflexologie inter-continentaliste continue à réglementer les grabuses lastiques vers l'humanisme, c’est clair. </p>
               </div>
 
             </div> <!-- End of .podcasts_container -->
@@ -172,14 +169,14 @@
             <div class="tests_written_container">
 
               <div class="medias_container">
-                <img src="images/dbzhd_snes.jpg" alt="" class="img-responsive">
+                <img src="css/images/dbzhd_snes.jpg" alt="" class="img-responsive">
               </div>
 
               <div class="text_container">
                 <div class="title_container">
                   <h3>Title</h3>
                 </div>
-                <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                <p class="text-justify"> Parallèlement, la contextualisation éventualiste sous cet angle là consiste à établir le conpemdium possédant la francophonie, je vous en prie. </p>
               </div>
 
             </div> <!-- End of .tests_written_container -->
@@ -189,7 +186,7 @@
         </div> <!-- End of .media_section -->
 
         <!-- Feedbacks + Random Section -->
-        <div class="col-xs-12 col-sm-6 feed_random">
+        <div class="col-xs-12 col-sm-6 feed_random contentHeight">
           <div class="row">
 
             <!-- Feedbacks -->
@@ -202,13 +199,14 @@
               <div class="content_container">
 
                 <div class="medias_container">
-                  <img src="images/expo_foot.jpg" alt="" class="img-responsive">
-                  <img src="images/expo_foot.jpg" alt="" class="img-responsive">
+                  <img src="css/images/expo_foot.jpg" alt="" class="img-responsive">
                 </div>
 
                 <div class="text_container">
-                  <h3 class="text-justify">Titre <small>00/00/00</small></h3>
-                  <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                  <div class="title_container">
+                    <h3 class="text-justify">Titre <small>00/00/00</small></h3>
+                  </div>
+                  <p class="text-justify"> Tandis que la politique est encadrée par des scientifiques issus de Sciences Po et Administratives, le colloque à forciori, doit gérer cette climatologie possédant la francophonie, bonnes fêtes. </p>
                 </div>
 
               </div>
@@ -226,11 +224,11 @@
                 <div class="first_random">
 
                   <div class="medias_container">
-                    <img src="images/dbzhd_snes.jpg" alt="" class="img-responsive">
+                    <img src="css/images/dbzhd_snes.jpg" alt="" class="img-responsive">
                   </div>
 
                   <div class="text_container">
-                    <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                    <p class="text-justify"> Au nom de toute la communauté des savants, l'activisme de toute la République Démocratique du Congo se résume à faceter le trabajo, le travail, la machinale, la robotisation dans ces prestances, Bonne Année. </p>
                   </div>
 
                 </div> <!-- End of .first_random -->
@@ -238,11 +236,11 @@
                 <div class="second_random">
 
                   <div class="medias_container">
-                    <img src="images/gamecube.jpg" alt="" class="img-responsive">
+                    <img src="css/images/gamecube.jpg" alt="" class="img-responsive">
                   </div>
 
                   <div class="text_container">
-                    <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                    <p class="text-justify"> Lorsqu’on parle de tous ces points de vues, l'ittérativisme de la technicité informatisée consent à uniformiser l'estime du savoir vers Lovanium, merci. </p>
                   </div>
 
                 </div> <!-- End of .second_random -->
@@ -269,6 +267,8 @@
 
     <!-- Bootstrap - Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/adaptive_height.js"></script>
 
   </body>
 </html>
