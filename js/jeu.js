@@ -6,6 +6,8 @@ $(document).ready(function () {
   let games = [];
   let idGame = [];
 
+  CKEDITOR.replace( 'eventPresentation' );
+
   request(''); // requete pour afficher tout les jeux par défaut
 
   // il se passe des trucs si je commence à remplir le champ de recherche de jeu...
@@ -17,6 +19,10 @@ $(document).ready(function () {
 
   // Que se passe-t'il si j'appuie sur le bouton valider de la création d'événement
   $('#addEvent').click(function () {
+
+    var editorText = CKEDITOR.instances.eventPresentation.getData();
+    
+    $('#modalEventText').html(editorText);
 
       $('#eventModal').modal('show');
 
@@ -32,6 +38,7 @@ $(document).ready(function () {
     });
     // que j'ajoute aux les données du formulaire
     formContent.append('games', idGame);
+    formContent.append('eventPresentation', editorText);
 
       // je rentre toute les données précédemment acquise dans le modal pour validation
     addContentToModal(
