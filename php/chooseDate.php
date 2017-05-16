@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connexion.php';
+include '_connexion.php';
 
 $res = "SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1";
 

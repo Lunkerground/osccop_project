@@ -6,10 +6,10 @@ include_once('_connexion.php');
     $mois = $_POST['mois'];
     $annee = $_POST['annee'];
     if ($mois != "") {
-      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$mois/$annee%'";
+      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%-$mois-$annee%'";
     }
     elseif ($annee != "") {
-      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%/$annee'";
+      $res = "SELECT titre_event, id_event FROM evenement WHERE date_event LIKE '%-$annee'";
     }
     $data = $cnx->prepare($res);
     $data->execute();
