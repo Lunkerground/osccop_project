@@ -107,9 +107,6 @@ $date = explode("/", $data["date_event"]);
         $data2 = $cnx->prepare($res2);
         $data2->execute();
         $data2 = $data2->fetch(PDO::FETCH_ASSOC);
-
-        $date = explode("/", $data2['date_event']);
-
         if ($event){
 
         ?>
