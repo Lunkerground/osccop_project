@@ -10,6 +10,14 @@
 @font-face {
   font-family: roboto;
   src: url("../../fonts/Roboto-Regular.ttf"); }
+.pedagologo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 10vw;
+  height: auto;
+  transform: rotate(-15deg); }
+
 .banner img {
   margin: auto; }
   @media only screen and (orientation: landscape) and (min-width: 992px) {
@@ -201,6 +209,7 @@ body {
     font-family: roboto; }
 
 .medias_container img {
+  width: 100%;
   border-radius: 3px; }
 
 .yellow, .navigation .navigation_collapse li a {

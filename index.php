@@ -1,3 +1,5 @@
+<?php include 'php/_connexion.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OSCCOP - Accueil</title>
+
+    <link rel="icon" type="image/png" href="css/images/logo_osccop_short.png" />
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,9 +25,11 @@
 
     <header>
 
+      <img src="css/images/logo_pedagojeux.png" alt="logo pedagojeux" class="pedagologo">
+
       <!-- Banner -->
       <div class="banner">
-        <img src="css/images/banner.jpg" alt="Bannière" class="img-responsive">
+        <img src="css/images/banner.png" alt="Bannière" class="img-responsive">
       </div>
 
       <?php include 'pages/components/_navbar_main.php' ?>
@@ -34,7 +40,7 @@
         <div class="row main_important">
 
           <!-- Next Events to come -->
-          <div class="col-xs-12 col-sm-6 next_events headerHeight" style="display: flex; flex-direction: column; justify-content: space-between">
+          <div class="col-xs-12 col-sm-6 next_events headerHeight">
             <div class="row">
 
               <!-- Section Title -->
@@ -42,39 +48,33 @@
                 <h3 class="text-left"><span class="yellow">Évènements à venir</span></h3>
               </div>
 
-              <!-- First Event to come -->
-              <div class="col-xs-12 col-sm-6 text_container eventHeight">
+              <!-- Most Recent Events -->
+              <?php
 
-                <div class="medias_container">
-                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
-                </div>
+                $res = $cnx->prepare('SELECT * FROM evenement ORDER BY id_event DESC LIMIT 2');
+                $res->execute();
 
-                <div class="text-center">
-                  <p><strong>Les 20 ans de la Playstation</strong></p>
-                  <hr>
-                  <p>Date</p>
-                  <hr>
-                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
-                </div>
+                while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
 
-              </div>
+                  echo
 
-              <!-- Second Event to come -->
-              <div class="hidden-xs col-sm-6 text_container eventHeight">
+                  '<div class="col-xs-12 col-sm-6 text_container eventHeight">
+                    <div class="medias_container">
+                      <img src="upload/' . $data['img_event'] . '" alt="affiche" class="img-responsive">
+                    </div>
 
-                <div class="medias_container">
-                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
-                </div>
+                    <div class="text-center">
+                      <p><strong>' . $data['titre_event'] . '</strong></p>
+                      <hr>
+                      <p>' . $data['date_event'] . '</p>
+                      <hr>
+                      <p><a href="#" class="blue third_links">+ d\'infos</a></p>
+                    </div>
+                  </div>';
 
-                <div class="text-center">
-                  <p><strong>Title</strong></p>
-                  <hr>
-                  <p>Date</p>
-                  <hr>
-                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
-                </div>
+                }
 
-              </div>
+              ?>
 
               <!-- Section Button -->
               <div class="col-xs-12">
