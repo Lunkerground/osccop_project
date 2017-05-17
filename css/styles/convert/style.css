@@ -149,7 +149,7 @@ footer {
   .feedback_section .content_container .medias_container,
   .random_section .content_container .first_random .medias_container,
   .random_section .content_container .second_random .medias_container {
-    width: 45%;
+    width: 35%;
     margin-right: 25px; }
   .media_section .content_container .tests_videos_container .text_container,
   .media_section .content_container .podcasts_container .text_container,
@@ -157,7 +157,7 @@ footer {
   .feedback_section .content_container .text_container,
   .random_section .content_container .first_random .text_container,
   .random_section .content_container .second_random .text_container {
-    width: 55%; }
+    width: 65%; }
 
 .media_section .content_container {
   display: flex;
@@ -186,6 +186,9 @@ body {
   background-color: #FBDB00;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
+  .content_container .title_container {
+    margin-bottom: 15px;
+    padding: 0; }
 
 .title_container {
   padding: 10px;
