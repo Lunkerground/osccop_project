@@ -11,6 +11,7 @@ $(document).ready(function () {
     request(inputValue)
   })
 })
+
 var request = (inpVal) => {
   $.ajax({
     method: 'GET',
@@ -27,11 +28,12 @@ var request = (inpVal) => {
 
       // ajoute la pagination si le nombre de jeux à afficher dépasse la limite
       if (numberOfGameFound > NBGAMEMAXTODISPLAY) {
-        $('#pages').html('')
+        $('.pagination').html('')
         for (let p = 1; p <= Math.ceil(numberOfGameFound / NBGAMEMAXTODISPLAY); p++) {
-          $('.pagination').append("<li><a class='pagenb'>" + p + ' </a></li>')
+          $('.pagination').append("<li><a href='#' class='pagenb'>" + p + ' </a></li>')
         }
-        $('a.pagenb').click(function () {
+        $('a.pagenb').click(function (e) {
+          e.preventDefault()
           queryOffset = $('.pagenb').index($(this)) * NBGAMEMAXTODISPLAY
           $('#gamelist').html('')
           resultDisplay(
@@ -42,7 +44,7 @@ var request = (inpVal) => {
           )
         })
       } else {
-        $('#pages').html('')
+        $('.pagination').html('')
       }
       resultDisplay(
         gameData,
@@ -67,15 +69,112 @@ var resultDisplay = (data, offset, limit, gameCount) => {
   if ((gameCount - offset) < limit) {
     limitOfGame = gameCount - offset - 1
   }
+
   // affiche les jeux
+  $('#gamelist').append('<div class="newGame">++ Nouveau jeu ++ </div>')
   for (let i = offset; i <= (offset + limitOfGame); i++) {
-    $('#gamelist').append('<div class="game row" id="G' + data[i].id_jeu + '"><div class="col-lg-10">' + data[i].nom_jeu + ' <small>' + data[i].nom_console + '</small></div><div class="col-lg-1"><a class="editGame"><span class="glyphicon glyphicon-pencil"></span></a></div><div class="col-lg-1"><a class="deleteGame"><span class="glyphicon glyphicon-remove"></span></a></div></div>')
+    $('#gamelist').append('<div class="game row" id="G' + i + '"><div class="col-lg-10">' + data[i].nom_jeu + ' <small>' + data[i].nom_console + '</small></div><div class="col-lg-1"><a class="editGame" onclick="editGame(this)"><span class="glyphicon glyphicon-pencil"></span></a></div><div class="col-lg-1"><a class="deleteGame" onclick= "deleteGame(this)" ><span class="glyphicon glyphicon-remove"></span></a></div></div>')
   }
-  // Ajout de jeu dans la selection
-  $('.editGame').click(function () {
+}
 
+// Editer un jeu
+var editGame = (element) => {
+  $('input[name=image_game]').val('')
+  var blockId = $(element).parents().parents().attr('id').substr(1)
+  $('input[name=name_game]').val(gameData[blockId].nom_jeu)
+  $('select[name=console]').val(gameData[blockId].id_console)
+  $('input#action').attr('name', 'edit').val(gameData[blockId].id_jeu)
+  $('.image img').attr('src', '../images/upload/' + gameData[blockId].img_jeu)
+  $('input[name=edit]').click(function () {
+    let blockId = $(element).parents().parents().attr('id').substr(1)
+    let confirmContent = 'Confirmez-vous la modificationn du jeu ' + gameData[blockId].nom_jeu + ' sur ' + gameData[blockId].nom_console + ' en ' + $('input[name=name_game]') + ' sur ' + $('select[name=console] option:selected').text()
+    addContentToModal('Suppression de jeu', confirmContent)
   })
-  $('.deleteGame').click(function () {
+  $('input[name=submit]').click(function (e) {
+    let myform = document.getElementById('gameManagementForm')
+    let formContent = new FormData(myform)
+    e.preventDefault
+    let newImage = document.getElementById('inputImage')
+    readURL(newImage)
+    let confirmContent = '<p>Voici les changement que vous allez effectuer</p><table><tr><td></td><th>Ancien</th><th>Nouveau</th></tr><tr><th>Nom du jeu</th><td>' + gameData[blockId].nom_jeu + '</td><td>' + formContent.get('name_game') + '</td></tr><tr><th>Console</th><td>' + gameData[blockId].nom_console + '</td><td>' + $('select[name=console] option:selected').text() + '</td></tr><tr><th>Image</th><td><img src="../images/upload/' + gameData[blockId].img_jeu + '" width="100px"/></td><td><img id="newImage" src="#" width="100px"/></td></tr></table>'
+    addContentToModal('Edition de jeu', confirmContent)
+    $('#GameModalConfirm').modal('show')
+    $('#GameModalConfirm #validate').click(function () {
+      $('#GameModalConfirm').modal('hide')
+      let consoleName = gameData[blockId].nom_console
+      let gameName = gameData[blockId].nom_jeu
+      $.ajax({
+        method: 'POST',
+        url: '/osccop_project/php/gameManagement.php',
+        data: formContent,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        datatype: 'json',
+        success: (data) => {
+          let messageContent
+          if (data === 'OK') {
+            messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement effacer de la base de donnée'
+            request('')
+          } else {
+            messageContent = 'Une erreur est survenue<br>' + data
+          }
+          alertMessage('SUCCESS', messageContent)
+        }
+      })
+    })
+  })
+}
 
+// Retirer un jeu de la bdd
+var deleteGame = (element) => {
+  let blockId = $(element).parents().parents().attr('id').substr(1)
+  let confirmContent = 'Confirmez-vous la suppression du jeu ' + gameData[blockId].nom_jeu + ' sur ' + gameData[blockId].nom_console + ' de la base de donnée?'
+  addContentToModal('Suppression de jeu', confirmContent)
+  $('#GameModalConfirm').modal('show')
+  $('#GameModalConfirm #validate').click(function () {
+    $('#GameModalConfirm').modal('hide')
+    let consoleName = gameData[blockId].nom_console
+    let gameName = gameData[blockId].nom_jeu
+    $.ajax({
+      method: 'GET',
+      url: '/osccop_project/php/deleteGame.php',
+      data: {
+        id: gameData[blockId].id_jeu
+      },
+      datatype: 'json',
+      success: (data) => {
+        let messageContent
+        if (data === 'OK') {
+          messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement effacer de la base de donnée'
+          request('')
+        } else {
+          messageContent = 'Une erreur est survenue<br>' + data
+        }
+        alertMessage('SUCCESS', messageContent)
+      }
+    })
   })
+}
+
+var addContentToModal = (title, content) => {
+  $('#GameModalConfirm .modal-title').html(title)
+  $('#GameModalConfirm .modal-body').html(content)
+}
+
+var alertMessage = (messageTitle, messageText) => {
+  $('#modalMessageTitle').html(messageTitle)
+  $('#MessageText').html(messageText)
+  $('#messageModal').modal('show')
+}
+
+// fonction pour l'affichage de l'affiche dans le modal
+var readURL = (input) => {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader()
+    reader.onload = function (e) {
+      $('.image img, #newImage').attr('src', e.target.result)
+    }
+    reader.readAsDataURL(input.files[0])
+  }
 }

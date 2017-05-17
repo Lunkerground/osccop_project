@@ -29,16 +29,15 @@ $(document).ready(function () {
       idGame.push($(this).parents('.game').attr('id').substr(1))
     })
     // que j'ajoute aux les données du formulaire
-    formContent.append('games', idGame)
+    formContent.append('games', idGame);
 
-    // je rentre toute les données précédemment acquise dans le modal pour validation
+      // je rentre toute les données précédemment acquise dans le modal pour validation
     addContentToModal(
       formContent.get('eventName'),
       formContent.get('eventDate'),
-      formContent.get('eventPresentation'),
       games
     )
-    console.log(formContent.get('eventPoster'))
+
     $('#validate').click(function () {
       $.ajax({
         url: '../php/ajoutEvent.php',
@@ -76,12 +75,13 @@ var request = (inpVal) => {
 
       // ajoute la pagination si le nombre de jeux à afficher dépasse la limite
       if (numberOfGameFound > NBGAMEMAXTODISPLAY) {
-        $('#pages').html('')
+        $('.pagination').html('')
         for (let p = 1; p <= Math.ceil(numberOfGameFound / NBGAMEMAXTODISPLAY); p++) {
-          $('.pagination').append("<li><a class='pagenb'>" + p + ' </a></li>')
+          $('.pagination').append("<li><a href='#' class='pagenb'>" + p + ' </a></li>')
         }
-        $('a.pagenb').click(function () {
-          queryOffset = $('.pagenb').index($(this)) * NBGAMEMAXTODISPLAY
+        $('a.pagenb').click(function (e) {
+          e.preventDefault()
+          queryOffset = $('.pagenb').index($(this)) * NBGAMEMAXTODISPLAY;
           $('#gamelist').html('')
           resultDisplay(
             gameData,
@@ -91,7 +91,7 @@ var request = (inpVal) => {
           )
         })
       } else {
-        $('#pages').html('')
+        $('.pagination').html('')
       }
       // affiche les jeux correspondant à la recherche
       resultDisplay(
@@ -126,7 +126,8 @@ var resultDisplay = (data, offset, limit, gameCount) => {
   // Ajout de jeu dans la selection
   $('.selectGame').click(function () {
     let gIndex = $('.game').index($(this).parents().parents())
-    let gId = $(this).parents().parents().attr('id').substr(1)
+    let gId = jeu.js
+
     // vérfie si le jeu fait déjà parti de la sélection
     let alreadySelected = false
     $('.choosedgame .game').each(function () {
@@ -145,7 +146,7 @@ var resultDisplay = (data, offset, limit, gameCount) => {
     }
     // retirer un jeu de la liste des selectionnés
     $('.removeGame').click(function () {
-      let cId = $(this).parents().parents().attr('id')
+      let cId = $(this).parents().parents().attr('id');
       $('#' + cId).remove()
     })
   })
@@ -168,10 +169,9 @@ var selectedDisplay = (gameId, gameName, consoleName) => {
 }
 
 // fonctin de remplissage du modal de prévisualisation/validation
-var addContentToModal = (eventtitle, eventdate, eventtext, eventgames) => {
+var addContentToModal = (eventtitle, eventdate, eventgames) => {
   $('#modalEventTitle').html(eventtitle)
   $('#modalEventDate').html(eventdate)
-  $('#modalEventText').html(eventtext)
   $('#modalEventGames').html(eventgames)
 }
 
