@@ -113,18 +113,20 @@ $date = explode("-", $data["date_event"]);
 
           <div class="form-group col-lg-12">
 
-              <form id="modEventForm" enctype="multipart/form-data">
-                  <label for="modEventNameModif">Nom de l'événement</label>
-                  <input class="form-control input-sm " type="text" name="modEventNameModif" id="name" value= "<?php echo $data2['titre_event']?>" >
-                  <label for="modEventDateModif">Date de l'événement</label>
-                  <input class="form-control" type="date" name="modEventDateModif" id="time" value="<?php echo $date[2]."-".$date[1]."-".$date[0] ?>">
+              <form id="modEventForm" method="POST" action="../php/modifierEvent.php" enctype="multipart/form-data">
+                  <label for="modEventName">Nom de l'événement</label>
+                  <input class="form-control input-sm " type="text" name="modEventName" id="name" value= "<?php echo $data2['titre_event']?>" >
+                  <label for="modEventDate">Date de l'événement</label>
+                  <input class="form-control" type="date" name="modEventDate" id="time" value="<?php echo $date[2]."-".$date[1]."-".$date[0] ?>">
                   <label for="modEventPoster">Affiche</label>
                   <input class="form-control" type="file" name="modEventPoster" id="affiche" onchange="readURL(this)">
-                  <label for="modEventPresentation">Presentation</label>
+                  <label for="eventPresentationModif">Presentation</label>
                   <textarea name="eventPresentationModif" id="eventPresentationModif" rows="8" cols="44"><?php echo $data2['txt_event'] ?></textarea>
+                  <input type="hidden" name="idEvent" id='idEvent' value="<?php echo $event?>">
                   <p>
                       <a class="btn btn-default" id="modEvent">Valider l'événement </a>
                   </p>
+                  <input type="submit" name="name" value="TEST">
               </form>
 
           </div>
@@ -171,7 +173,7 @@ $date = explode("-", $data["date_event"]);
         </div>
         <div class="modal-footer">
             <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
-            <button type="button" id="validate" class="btn btn-default">Valider</button>
+            <button type="button" id="validateMod" class="btn btn-default">Valider</button>
         </div>
     </div>
 </div>
