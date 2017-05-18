@@ -10,6 +10,14 @@
 @font-face {
   font-family: roboto;
   src: url("../../fonts/Roboto-Regular.ttf"); }
+.pedagologo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 10vw;
+  height: auto;
+  transform: rotate(-15deg); }
+
 .banner img {
   margin: auto; }
   @media only screen and (orientation: landscape) and (min-width: 992px) {
@@ -141,7 +149,7 @@ footer {
   .feedback_section .content_container .medias_container,
   .random_section .content_container .first_random .medias_container,
   .random_section .content_container .second_random .medias_container {
-    width: 45%;
+    width: 35%;
     margin-right: 25px; }
   .media_section .content_container .tests_videos_container .text_container,
   .media_section .content_container .podcasts_container .text_container,
@@ -149,7 +157,7 @@ footer {
   .feedback_section .content_container .text_container,
   .random_section .content_container .first_random .text_container,
   .random_section .content_container .second_random .text_container {
-    width: 55%; }
+    width: 65%; }
 
 .media_section .content_container {
   display: flex;
@@ -178,6 +186,9 @@ body {
   background-color: #FBDB00;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
+  .content_container .title_container {
+    margin-bottom: 15px;
+    padding: 0; }
 
 .title_container {
   padding: 10px;
@@ -201,6 +212,7 @@ body {
     font-family: roboto; }
 
 .medias_container img {
+  width: 100%;
   border-radius: 3px; }
 
 .yellow, .navigation .navigation_collapse li a {

@@ -1,3 +1,5 @@
+<?php include 'php/_connexion.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OSCCOP - Accueil</title>
+
+    <link rel="icon" type="image/png" href="css/images/logo_osccop_short.png" />
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,9 +25,11 @@
 
     <header>
 
+      <img src="css/images/logo_pedagojeux.png" alt="logo pedagojeux" class="pedagologo">
+
       <!-- Banner -->
       <div class="banner">
-        <img src="css/images/banner.jpg" alt="Bannière" class="img-responsive">
+        <img src="css/images/banner.png" alt="Bannière" class="img-responsive">
       </div>
 
       <?php include 'pages/components/_navbar_main.php' ?>
@@ -34,7 +40,7 @@
         <div class="row main_important">
 
           <!-- Next Events to come -->
-          <div class="col-xs-12 col-sm-6 next_events headerHeight" style="display: flex; flex-direction: column; justify-content: space-between">
+          <div class="col-xs-12 col-sm-6 next_events headerHeight">
             <div class="row">
 
               <!-- Section Title -->
@@ -42,39 +48,33 @@
                 <h3 class="text-left"><span class="yellow">Évènements à venir</span></h3>
               </div>
 
-              <!-- First Event to come -->
-              <div class="col-xs-12 col-sm-6 text_container eventHeight">
+              <!-- Most Recent Events -->
+              <?php
 
-                <div class="medias_container">
-                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
-                </div>
+                $res_events = $cnx->prepare('SELECT * FROM evenement ORDER BY id_event DESC LIMIT 2');
+                $res_events->execute();
 
-                <div class="text-center">
-                  <p><strong>Les 20 ans de la Playstation</strong></p>
-                  <hr>
-                  <p>Date</p>
-                  <hr>
-                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
-                </div>
+                while ($data = $res_events->fetch(PDO::FETCH_ASSOC)) {
 
-              </div>
+                  echo
 
-              <!-- Second Event to come -->
-              <div class="hidden-xs col-sm-6 text_container eventHeight">
+                  '<div class="col-xs-12 col-sm-6 text_container eventHeight">
+                    <div class="medias_container">
+                      <img src="upload/' . $data['img_event'] . '" alt="affiche" class="img-responsive">
+                    </div>
 
-                <div class="medias_container">
-                  <img src="css/images/test_affiche.jpg" alt="affiche" class="img-responsive">
-                </div>
+                    <div class="text-center">
+                      <p><strong>' . $data['titre_event'] . '</strong></p>
+                      <hr>
+                      <p>' . $data['date_event'] . '</p>
+                      <hr>
+                      <p><a href="#" class="blue third_links">+ d\'infos</a></p>
+                    </div>
+                  </div>';
 
-                <div class="text-center">
-                  <p><strong>Title</strong></p>
-                  <hr>
-                  <p>Date</p>
-                  <hr>
-                  <p><a href="#" class="blue third_links">+ d'infos</a></p>
-                </div>
+                }
 
-              </div>
+              ?>
 
               <!-- Section Button -->
               <div class="col-xs-12">
@@ -193,21 +193,34 @@
             <div class="col-xs-12 feedback_section">
 
               <div class="title_container">
-                <h3>Compte-rendus</h3>
+                <h3>Derniers compte-rendus</h3>
               </div>
 
               <div class="content_container">
 
-                <div class="medias_container">
-                  <img src="css/images/expo_foot.jpg" alt="" class="img-responsive">
-                </div>
+                <?php
 
-                <div class="text_container">
-                  <div class="title_container">
-                    <h3 class="text-justify">Titre <small>00/00/00</small></h3>
-                  </div>
-                  <p class="text-justify"> Tandis que la politique est encadrée par des scientifiques issus de Sciences Po et Administratives, le colloque à forciori, doit gérer cette climatologie possédant la francophonie, bonnes fêtes. </p>
-                </div>
+                  $res_cr = $cnx->prepare('SELECT * FROM evenement ORDER BY id_event DESC LIMIT 1');
+                  $res_cr->execute();
+
+                  while ($data = $res_cr->fetch(PDO::FETCH_ASSOC)) {
+
+                    echo
+
+                    '<div class="medias_container">
+                      <img src="upload/' . $data['img_event'] . '" alt="" class="img-responsive">
+                    </div>
+
+                    <div class="text_container">
+                      <div class="title_container">
+                        <h4 class="text-left">' . $data['titre_event'] . '<br/><small>' . $data['date_event'] . '</small></h4>
+                      </div>
+                      <p class="text-justify">' . substr($data['txt_event'], 0, 100) . ' ... <a href="">Voir plus</a></p>
+                    </div>';
+
+                  }
+
+                ?>
 
               </div>
             </div>
@@ -223,27 +236,73 @@
 
                 <div class="first_random">
 
-                  <div class="medias_container">
-                    <img src="css/images/dbzhd_snes.jpg" alt="" class="img-responsive">
-                  </div>
+                  <?php
 
-                  <div class="text_container">
-                    <p class="text-justify"> Au nom de toute la communauté des savants, l'activisme de toute la République Démocratique du Congo se résume à faceter le trabajo, le travail, la machinale, la robotisation dans ces prestances, Bonne Année. </p>
-                  </div>
+                    $rdm = rand(1, 2);
+
+                    switch ($rdm) {
+
+                      case 1:
+
+                        $res_rndm_game = $cnx->prepare('SELECT * FROM jeu ORDER BY RAND() LIMIT 1');
+                        $res_rndm_game->execute();
+
+                        $res_count_game = $cnx->prepare('SELECT COUNT(*) FROM jeu');
+                        $res_count_game->execute();
+
+                        $nbrjeu = $res_count_game->fetch(PDO::FETCH_ASSOC);
+
+                        while ($data = $res_rndm_game->fetch(PDO::FETCH_ASSOC)) {
+
+                          echo
+
+                          '<div class="medias_container">
+                            <img src="upload/' . $data['img_jeu'] . '" alt="" class="img-responsive">
+                          </div>
+
+                          <div class="text_container">
+                            <p class="text-justify">Voici <strong>' . $data['nom_jeu'] . '</strong>, l\'un des ' . $nbrjeu['COUNT(*)'] . ' jeux utilisés lors d\'un évènement OSCCOP.</p>
+                            <br/>
+                            <p class="text-center"><a href="#">Voir un évènement associé à ce jeu</a></p>
+                          </div>';
+
+                        };
+
+                        break;
+
+                      case 2:
+
+                        $res_rndm_console = $cnx->prepare('SELECT * FROM console ORDER BY RAND() LIMIT 1');
+                        $res_rndm_console->execute();
+
+                        $res_count_console = $cnx->prepare('SELECT COUNT(*) FROM console');
+                        $res_count_console->execute();
+
+                        $nbrconsole = $res_count_console->fetch(PDO::FETCH_ASSOC);
+
+                        while ($data = $res_rndm_console->fetch(PDO::FETCH_ASSOC)) {
+
+                          echo
+
+                          '<div class="medias_container">
+                            <img src="upload/' . $data['img_console'] . '" alt="" class="img-responsive">
+                          </div>
+
+                          <div class="text_container">
+                            <p class="text-justify">Voici la <strong>' . $data['nom_console'] . '</strong>, l\'une des ' . $nbrconsole['COUNT(*)'] . ' consoles utilisées lors d\'un évènement OSCCOP.</p>
+                            <br/>
+                            <p class="text-center"><a href="#">Voir un évènement associé à cette console</a></p>
+                          </div>';
+
+                        };
+
+                        break;
+
+                    }
+
+                  ?>
 
                 </div> <!-- End of .first_random -->
-
-                <div class="second_random">
-
-                  <div class="medias_container">
-                    <img src="css/images/gamecube.jpg" alt="" class="img-responsive">
-                  </div>
-
-                  <div class="text_container">
-                    <p class="text-justify"> Lorsqu’on parle de tous ces points de vues, l'ittérativisme de la technicité informatisée consent à uniformiser l'estime du savoir vers Lovanium, merci. </p>
-                  </div>
-
-                </div> <!-- End of .second_random -->
 
               </div> <!-- End of .content_container -->
 
