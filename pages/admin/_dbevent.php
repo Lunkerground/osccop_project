@@ -2,13 +2,21 @@
 
 include "../php/_connexion.php";
 
-$res = "SELECT date_event FROM evenement ORDER BY id_event DESC LIMIT 1";
+$res = "SELECT * FROM evenement ORDER BY id_event DESC LIMIT 1";
 
 $data = $cnx->prepare($res);
 $data->execute();
 $data = $data->fetch(PDO::FETCH_ASSOC);
 
-$date = explode("-", $data["date_event"]);
+$event = isset($_GET['event'])? $_GET['event']: '';
+
+$res2 = "SELECT * FROM evenement WHERE id_event  = '$event'";
+
+$data2 = $cnx->prepare($res2);
+$data2->execute();
+$data2 = $data2->fetch(PDO::FETCH_ASSOC);
+
+$date = explode("-", $data2["date_event"]);
 
 ?>
 <div class="" style="border: 1px black solid">
@@ -21,20 +29,28 @@ $date = explode("-", $data["date_event"]);
           <h3>Ajout</h3>
         </div>
         <div class="">
-          <form id="addEventForm" enctype="multipart/form-data">
+          <form id="addEventForm" action = "../php/ajoutEvent.php" method = "POST" enctype="multipart/form-data">
             <div class="row">
               <div class="form-group col-lg-12">
                 <label for="eventName">Nom de l"événement</label>
                 <input class="form-control input-sm " type="text" name="eventName" required>
                 <label for="eventDate">Date de l"événement</label>
-                <input class="form-control" type="date" name="eventDate" required>
+                <input class="form-control" type="date" id="eventDate" name="eventDate" required>
                 <label for="eventPoster">Affiche</label>
                 <input class="form-control" type="file" name="eventPoster" onchange="readURL(this)"  accept="image/*">
                 <label for="eventPresentation">Presentation</label>
                 <textarea class="form-control" name="eventPresentation" id="eventPresentation" rows="8"></textarea>
               </div>
 
+
             </div>
+            <script>
+            $( function() {
+              $( "#eventDate" ).datepicker({
+                dateFormat: "yy-mm-dd"
+              });
+            } );
+            </script>
           </form>
             <h4>Ajouter des jeux</h4>
             <div class="row">
@@ -96,17 +112,10 @@ $date = explode("-", $data["date_event"]);
             }
           ?>
         </select>
-        <ul id="TEST"></ul>
+        <ul id="listeEvent"></ul>
 
         <?php
 
-        $event = isset($_GET['event'])? $_GET['event']: '';
-
-        $res2 = "SELECT * FROM evenement WHERE id_event  = '$event'";
-
-        $data2 = $cnx->prepare($res2);
-        $data2->execute();
-        $data2 = $data2->fetch(PDO::FETCH_ASSOC);
         if ($event){
 
         ?>
@@ -126,7 +135,6 @@ $date = explode("-", $data["date_event"]);
                   <p>
                       <a class="btn btn-default" id="modEvent">Valider l'événement </a>
                   </p>
-                  <input type="submit" name="name" value="TEST">
               </form>
 
           </div>
@@ -168,7 +176,7 @@ $date = explode("-", $data["date_event"]);
         <div class="modal-body">
             <p id="modalEventDateModif"></p>
             <p id="modalEventTextModif"></p>
-            <img class="modalEventPoster" src="#" width="200px">
+            <img class="modalEventPoster" src="../upload/<?php echo $data['img_event'] ?>" width="200px">
             <div id="modalEventGamesModif"></div>
         </div>
         <div class="modal-footer">

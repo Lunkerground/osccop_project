@@ -9,6 +9,7 @@ if ($idGame == "new") {
     if ($_FILES['image_game']['name'] !== "") {
         $gameImg = "jeux/".$_FILES['image_game']['name'];
         $imgPath = $_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/$gameImg";
+
         $upload = move_uploaded_file($_FILES['image_game']['tmp_name'], $imgPath) or die($errorMessage);
     } else {
         $gameImg = "jeux/defaultImg.jpeg";
@@ -23,6 +24,7 @@ if ($idGame == "new") {
     } else {
         $gameImg = "jeux/".$_FILES['image_game']['name'];
         $imgPath = $_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/$gameImg";
+
         $upload = move_uploaded_file($_FILES['image_game']['tmp_name'], $imgPath) or die($errorMessage);
         $query = "UPDATE jeu
                   SET nom_jeu = '$gameName', id_console = '$consoleId', img_jeu = '$gameImg'

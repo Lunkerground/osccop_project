@@ -1,3 +1,6 @@
+let games = [];
+let idGame = [];
+
 $('#modEvent').click(function () {
     $('#eventModalModif').modal('show')
 
@@ -5,7 +8,7 @@ $('#modEvent').click(function () {
     let myform = document.getElementById('modEventForm')
     let formContent = new FormData(myform)
 
-    
+
     var editorText = CKEDITOR.instances.eventPresentationModif.getData();
     var art = $('#eventPresentationModif').text();
 
@@ -13,13 +16,25 @@ $('#modEvent').click(function () {
     console.log(id);
     console.log(editorText);
 
+    var date = formContent.get('modEventDate')
+    date = date.split("-")
+    date = date[2] + "-" + date[1] + "-" + date[0]
+    console.log(date);
+
     formContent.append('modEventPresentation', editorText);
     formContent.append('id_event', id);
+    formContent.append('gamesMod', idGameMod);
+
+
+    $('.choosedgame .gameName').each(function () {
+      games.push('<p>' + $(this).html() + '</p>');
+      idGameMod.push($(this).parents('.game').attr('id').substr(1))
+    });
 
     // je rentre toute les données précédemment acquise dans le modal pour validation
     modContentToModal(
         formContent.get('modEventName'),
-        formContent.get('modEventDate'),
+        date,
         CKEDITOR.inline('modalEventTextModif').setData(art)
     )
     console.log(formContent.get('modEventPoster'))
