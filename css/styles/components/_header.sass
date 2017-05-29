@@ -71,7 +71,15 @@
     float: left
 
 .expo_foot
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   background-color: $yellow_color
+  .col-xs-12
+    display: flex
+    align-items: center
+    .text_container
+      margin-right: 5%
 
 .next_events, .expo_foot
   +headings

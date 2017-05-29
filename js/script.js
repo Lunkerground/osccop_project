@@ -5,19 +5,27 @@ $('#modEvent').click(function () {
     let myform = document.getElementById('modEventForm')
     let formContent = new FormData(myform)
 
+    
+    var editorText = CKEDITOR.instances.eventPresentationModif.getData();
     var art = $('#eventPresentationModif').text();
-    console.log(art);
+
+    var id = $('#idEvent').val();
+    console.log(id);
+    console.log(editorText);
+
+    formContent.append('modEventPresentation', editorText);
+    formContent.append('id_event', id);
 
     // je rentre toute les données précédemment acquise dans le modal pour validation
     modContentToModal(
-        formContent.get('modEventNameModif'),
-        formContent.get('modEventDateModif'),
+        formContent.get('modEventName'),
+        formContent.get('modEventDate'),
         CKEDITOR.inline('modalEventTextModif').setData(art)
     )
     console.log(formContent.get('modEventPoster'))
-    $('#validate').click(function () {
+    $('#validateMod').click(function () {
         $.ajax({
-                url: '../php/ajoutEvent.php',
+                url: '../php/modifierEvent.php',
                 data: formContent,
                 type: 'POST',
                 contentType: false,

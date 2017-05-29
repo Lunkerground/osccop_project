@@ -1,3 +1,11 @@
+<?php
+
+$page = explode('/', $_SERVER['REQUEST_URI']);
+$page = $page[count($page)-1];
+ // var_dump($page);
+
+ ?>
+
 <nav class="navbar navbar-default navigation">
 
   <div class="container-fluid">
@@ -20,7 +28,7 @@
     <div class="collapse navbar-collapse navigation_collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#" class="yellow first_links">Accueil</a></li>
+        <li><a href="index.php" class="yellow first_links">Accueil</a></li>
         <li><a href="pages/feedbacks.php" class="yellow first_links">Compte-rendus</a></li>
         <li><a href="pages/model.php" class="yellow first_links">Médias</a></li>
       </ul>

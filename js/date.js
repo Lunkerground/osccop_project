@@ -15,16 +15,11 @@ $('#mois,#annee').change(function () {
       titreDataAll = JSON.parse(data)
       for (var i = 0; i < titreDataAll.length; i++) {
         $('#TEST').append('<li id="' + titreDataAll[i].id_event +
-<<<<<<< HEAD
           '"> ' + titreDataAll[i].titre_event +
           '<a href="?page=events&event=' + titreDataAll[i].id_event + '" data-toggle="modal" data-target=""><i class="fa fa-wrench" aria-hidden="true"></i></a>  <a href=""data-toggle="modal" data-target=""><i class="fa fa-times" aria-hidden="true" style = "color: #CC3300"></i></a></li>')
         $('#idArticleSuppr').val(titreDataAll[i].id_event)
       }
-=======
-            '"> ' + titreDataAll[i].titre_event +
-            '<a href="?page=events&event=' + titreDataAll[i].id_event + '" data-toggle="modal" data-target=""><i class="fa fa-wrench" aria-hidden="true"></i></a> <a href=""data-toggle="modal" data-target=""><i class="fa fa-times" aria-hidden="true" style = "color: #CC3300"></i></a></li>');
-        $('#idArticleSuppr').val(titreDataAll[i].id_event);
->>>>>>> 34b8a4b4b4fa4675ec1e121d7ebf69815027116d
+
     }
   })
 })
