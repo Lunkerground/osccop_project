@@ -8,6 +8,8 @@ $presentation = isset($_POST['eventPresentation'])? $_POST['eventPresentation']:
 $games = isset($_POST['games'])? explode(",", $_POST['games']):"";
 
 
+
+
 $upload = move_uploaded_file($_FILES['eventPoster']['tmp_name'], $_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/affiche/$affiche") or die(" Votre image n'a pas été uploadé correctement ".$_SERVER['DOCUMENT_ROOT']."/osccop_project/images/upload/affiche/$affiche");
 
 
@@ -19,7 +21,8 @@ $req = $cnx->prepare($qry);
 $req->execute();
 $idEvent = $cnx->lastInsertId();
 
-foreach ($games as $idGame) {
+$idEvent = (int)$idEvent;
+  foreach ($games as $idGame) {
     $idGame =(int)$idGame;
     $query = "INSERT INTO jeu_event (id_event, id_jeu) VALUES ($idEvent, $idGame)";
     $qryGame = $cnx->prepare($query);

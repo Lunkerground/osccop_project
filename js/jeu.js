@@ -69,7 +69,7 @@ $(document).ready(function () {
 var request = (inpVal) => {
   $.ajax({
     method: 'GET',
-    url: '/osccop_project/php/gamesearch.php',
+    url: '../php/gamesearch.php',
     data: {
       game: inpVal,
       typeOfSearch: $('select[name=typeOfSearch]').val()
