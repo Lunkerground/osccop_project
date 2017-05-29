@@ -21,7 +21,7 @@ $(document).ready(function () {
   $('#addEvent').click(function () {
 
     var editorText = CKEDITOR.instances.eventPresentation.getData();
-    
+
     $('#modalEventText').html(editorText);
 
       $('#eventModal').modal('show');

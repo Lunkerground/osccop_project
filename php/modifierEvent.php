@@ -8,16 +8,16 @@ $data = $cnx->prepare($res);
 $data->execute();
 $data = $data->fetch(PDO::FETCH_ASSOC);
 
-$ntm = $data['img_event'];
+$ancienneAffiche = $data['img_event'];
 
 var_dump($_POST);
 
-$id_event = $_POST['id_event'];
+$id_event = $_POST['idEvent'];
 $titre = isset($_POST['modEventName'])? $_POST['modEventName']: "";
 $date = date('d-m-Y', strtotime(isset($_POST['modEventDate'])? $_POST['modEventDate']: ""));
 $presentation = isset($_POST['modEventPresentation'])? $_POST['modEventPresentation']: "";
   if ($_FILES['modEventPoster']['name'] == "") {
-    $affiche = $ntm;
+    $affiche = $ancienneAffiche;
   }
   else {
     $affiche = 'affiches/'.$_FILES['modEventPoster']['name'];
