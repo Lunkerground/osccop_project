@@ -1,0 +1,109 @@
+@import 'variables.sass'
+
+// Banner Styles
+.pedagologo
+  position: absolute
+  top: 10%
+  left: 10%
+  width: 10vw
+  height: auto
+  transform: rotate(-15deg)
+
+.banner img
+  margin: auto
+  +respond-to(md-landscape)
+    height: 40vh
+
+// Navbar Styles
+.navigation
+  z-index: 1
+  margin: 0
+  padding: 15px 0
+  border-radius: 10px 10px 0 0
+  border: none
+  background-color: $white_color
+
+  .navigation_collapse
+    padding: 0
+
+    ul
+      height: 100%
+
+    li
+      width: 10vw
+      margin: 0 10px
+      padding: 0
+      a
+        padding: 9%
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        @extend .yellow
+
+  .logo_centered
+    display: flex
+    justify-content: center
+    position: absolute
+    width: 100%
+    height: 25vh
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+
+    img
+      display: flex
+      align-items: center
+      +respond-to(md-landscape)
+        height: 100%
+
+// [Fix] Boostrap crap
+.navbar-right
+  margin-right: 0
+
+// Main Important
+.next_events
+  // display: flex
+  // flex-direction: column
+  // justify-content: space-between
+  background-color: $blue_color
+  .left_side
+    width: 50%
+    float: left
+
+.expo_foot
+  background-color: $yellow_color
+
+.next_events, .expo_foot
+  +headings
+    margin: 15px
+    font:
+      family: $font_main
+      weight: bold
+    text-shadow: 1px 1px $black_color
+  hr
+    margin: 10px 15px
+
+.expo_foot .medias_container,
+.expo_foot .text_container
+  // height: 40vh
+
+.next_events .text_container
+  display: flex
+  align-items: center
+  width: 45%
+  margin: 0 2.5%
+  padding: 10px
+
+.next_events .text_container .medias_container
+  flex: 1
+
+.next_events .text_container .text-center
+  flex: 1
+
+.next_events .medias_container img,
+.expo_foot .medias_container img
+  width: 100%
+  height: 100%
+
+// .media_section .content_container
+//   height: 95%

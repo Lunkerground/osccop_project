@@ -1,6 +1,9 @@
 var NBGAMEMAXTODISPLAY = 13
 var gameData
 var queryOffset = 0
+var consoleName = ''
+var gameName = ''
+var gameImage = ''
 $(document).ready(function () {
   request('') // requete pour afficher tout les jeux par défaut
 
@@ -9,6 +12,44 @@ $(document).ready(function () {
     let inputValue = $(this).val()
     queryOffset = 0
     request(inputValue)
+  })
+  $('input[name=submit]').click(function (e) {
+    e.preventDefault
+    let myform = document.getElementById('gameManagementForm')
+    let formContent = new FormData(myform)
+    let confirmContent = ''
+    let confirmTitle = ''
+    let newImage = document.getElementById('inputImage')
+    readURL(newImage)
+    if (formContent.get('action') !== 'new') {
+      confirmTitle = 'Edition de jeu'
+      confirmContent = '<p>Voici les changement que vous allez effectuer</p><table><tr><td></td><th>Ancien</th><th>Nouveau</th></tr><tr><th>Nom du jeu</th><td>' + gameName + '</td><td>' + formContent.get('name_game') + '</td></tr><tr><th>Console</th><td>' + consoleName + '</td><td>' + $('select[name=console] option:selected').text() + '</td></tr><tr><th>Image</th><td><img src="../images/upload/' + gameImage + '" width="100px"/></td><td><img id="newImage" src="#" width="100px"/></td></tr></table>'
+    } else {
+      confirmTitle = 'Ajout de jeu'
+      confirmContent = '<p>Vous allez ajouter ce jeu bas de donnée<p><p><strong>Nom</strong>: ' + formContent.get('name_game') + '</p>'
+    }
+    addContentToModal(confirmTitle, confirmContent)
+    $('#GameModalConfirm').modal('show')
+    $('#GameModalConfirm #validate').click(function () {
+      $('#GameModalConfirm').modal('hide')
+      $.ajax({
+        url: '/osccop_project/php/gameManagement.php',
+        data: formContent,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        success: (data) => {
+          let messageContent
+          if (data == 'OK') {
+            messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement ajouter à la base de donnée'
+            request('')
+          } else {
+            messageContent = 'Une erreur est survenue<br>' + data
+          }
+          alertMessage('SUCCESS', messageContent)
+        }
+      })
+    })
   })
 })
 
@@ -72,6 +113,11 @@ var resultDisplay = (data, offset, limit, gameCount) => {
 
   // affiche les jeux
   $('#gamelist').append('<div class="newGame">++ Nouveau jeu ++ </div>')
+  $('.newGame').click(function () {
+    $('#actionLegend').text('Ajouter un jeu')
+    $('input[name=name_game]').val('')
+    $('input[name=action]').val('new')
+  })
   for (let i = offset; i <= (offset + limitOfGame); i++) {
     $('#gamelist').append('<div class="game row" id="G' + i + '"><div class="col-lg-10">' + data[i].nom_jeu + ' <small>' + data[i].nom_console + '</small></div><div class="col-lg-1"><a class="editGame" onclick="editGame(this)"><span class="glyphicon glyphicon-pencil"></span></a></div><div class="col-lg-1"><a class="deleteGame" onclick= "deleteGame(this)" ><span class="glyphicon glyphicon-remove"></span></a></div></div>')
   }
@@ -79,51 +125,15 @@ var resultDisplay = (data, offset, limit, gameCount) => {
 
 // Editer un jeu
 var editGame = (element) => {
-  $('input[name=image_game]').val('')
+  $('#actionLegend').text('Editer un jeu')
   var blockId = $(element).parents().parents().attr('id').substr(1)
   $('input[name=name_game]').val(gameData[blockId].nom_jeu)
   $('select[name=console]').val(gameData[blockId].id_console)
-  $('input#action').attr('name', 'edit').val(gameData[blockId].id_jeu)
+  $('input[name=action]').val(gameData[blockId].id_jeu)
   $('.image img').attr('src', '../images/upload/' + gameData[blockId].img_jeu)
-  $('input[name=edit]').click(function () {
-    let blockId = $(element).parents().parents().attr('id').substr(1)
-    let confirmContent = 'Confirmez-vous la modificationn du jeu ' + gameData[blockId].nom_jeu + ' sur ' + gameData[blockId].nom_console + ' en ' + $('input[name=name_game]') + ' sur ' + $('select[name=console] option:selected').text()
-    addContentToModal('Suppression de jeu', confirmContent)
-  })
-  $('input[name=submit]').click(function (e) {
-    let myform = document.getElementById('gameManagementForm')
-    let formContent = new FormData(myform)
-    e.preventDefault
-    let newImage = document.getElementById('inputImage')
-    readURL(newImage)
-    let confirmContent = '<p>Voici les changement que vous allez effectuer</p><table><tr><td></td><th>Ancien</th><th>Nouveau</th></tr><tr><th>Nom du jeu</th><td>' + gameData[blockId].nom_jeu + '</td><td>' + formContent.get('name_game') + '</td></tr><tr><th>Console</th><td>' + gameData[blockId].nom_console + '</td><td>' + $('select[name=console] option:selected').text() + '</td></tr><tr><th>Image</th><td><img src="../images/upload/' + gameData[blockId].img_jeu + '" width="100px"/></td><td><img id="newImage" src="#" width="100px"/></td></tr></table>'
-    addContentToModal('Edition de jeu', confirmContent)
-    $('#GameModalConfirm').modal('show')
-    $('#GameModalConfirm #validate').click(function () {
-      $('#GameModalConfirm').modal('hide')
-      let consoleName = gameData[blockId].nom_console
-      let gameName = gameData[blockId].nom_jeu
-      $.ajax({
-        method: 'POST',
-        url: '/osccop_project/php/gameManagement.php',
-        data: formContent,
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        datatype: 'json',
-        success: (data) => {
-          let messageContent
-          if (data === 'OK') {
-            messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement effacer de la base de donnée'
-            request('')
-          } else {
-            messageContent = 'Une erreur est survenue<br>' + data
-          }
-          alertMessage('SUCCESS', messageContent)
-        }
-      })
-    })
-  })
+  consoleName = gameData[blockId].nom_console
+  gameName = gameData[blockId].nom_jeu
+  gameImage = gameData[blockId].img_jeu
 }
 
 // Retirer un jeu de la bdd

@@ -30,7 +30,7 @@
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-xs-12 col-sm-10">
+        <div class="col-xs-12 col-sm-9">
 
           <!-- Section Title -->
           <div class="title_container">
@@ -38,12 +38,61 @@
           </div>
 
           <!-- Section Content -->
-          <div class="content_container" style="height: 200px">
+          <div class="content_container">
+
+            <div class="sorting_container">
+              <form class="form-inline">
+                <div class="form-group">
+
+                  <label class="yellow">Afficher par :</label>
+
+                  <select class="form-control">
+                    <option selected disabled hidden>Année</option>
+                    <!-- Add Year Options here -->
+                  </select>
+
+                  <select class="form-control">
+                    <option selected disabled hidden>Mois</option>
+                    <!-- Add Month Option here -->
+                  </select>
+
+                  <select class="form-control">
+                    <option selected disabled hidden>Lieu</option>
+                    <!-- Add Location Option here -->
+                  </select>
+
+                </div>
+              </form>
+            </div> <!-- End of .sorting_container -->
+
+            <div class="elements_container" style="display: flex; flex-wrap: wrap; justify-content: space-around">
+
+              <div class="element" style="width: 15%; margin: 25px">
+                <a href="#">
+                  <div class="medias_container">
+                    <img src="../images/test_affiche.jpg" alt="affiche" class="img-responsive">
+                  </div>
+                  <div class="text_container">
+                    <p>Voir</p>
+                  </div>
+                </a>
+              </div>
+
+            </div> <!-- End of .elements_container -->
+
+            <ul class="pagination">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+            </ul>
 
           </div>
-        </div>
 
-        <div class="xs-hidden col-sm-2">
+        </div> <!-- End of .col-sm-9 -->
+
+        <div class="hidden-xs col-sm-3">
 
           <div class="row">
             <div class="col-sm-12">
@@ -52,11 +101,25 @@
                 <h3>Expo Foot</h3>
               </div>
 
-              <div class="content_container" style="height: 200px">
+              <div class="content_container">
+
+                <div class="text_container">
+                  <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia.</p>
+                </div>
+
+                <div class="medias_container">
+                  <img src="../images/expo_foot.jpg" alt="expo foot" class="img-responsive">
+                </div>
+
+                <div class="text_container">
+                  <p class="text-justify">Tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                </div>
+
+                <a href="#" class="second_links">Plus d'infos</a>
 
               </div>
 
-            </div>
+            </div> <!-- End of col-sm-12 -->
           </div>
 
           <div class="row">
@@ -66,14 +129,24 @@
                 <h3>Le Coin Random</h3>
               </div>
 
-              <div class="content_container" style="height: 200px">
+              <div class="content_container">
+
+                <div class="medias_container">
+                  <img src="../images/dbzhd_snes.jpg" alt="" class="img-responsive">
+                </div>
+
+                <div class="text_container">
+                  <p class="text-justify">Tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
+                </div>
+
+                <a href="#" class="second_links">Plus d'infos</a>
 
               </div>
 
-            </div>
+            </div> <!-- End of .col-sm-12 -->
           </div>
 
-        </div>
+        </div> <!-- End of .col-sm-3 -->
       </div>
 
     </div> <!-- End of .container-fluid -->

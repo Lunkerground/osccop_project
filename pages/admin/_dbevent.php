@@ -8,7 +8,7 @@ $data = $cnx->prepare($res);
 $data->execute();
 $data = $data->fetch(PDO::FETCH_ASSOC);
 
-$date = explode("/", $data["date_event"]);
+$date = explode("-", $data["date_event"]);
 
 ?>
 <div class="" style="border: 1px black solid">
@@ -107,9 +107,6 @@ $date = explode("/", $data["date_event"]);
         $data2 = $cnx->prepare($res2);
         $data2->execute();
         $data2 = $data2->fetch(PDO::FETCH_ASSOC);
-
-        $date = explode("/", $data2['date_event']);
-
         if ($event){
 
         ?>
@@ -197,25 +194,10 @@ $date = explode("/", $data["date_event"]);
 
 
 
+<script src="../js/ckeditor/ckeditor.js"></script>
 <script src="http://localhost/osccop_project/js/jeu.js"></script>
 <script src="http://localhost/osccop_project/js/script.js"></script>
-
 <script src="../js/date.js"></script>
-<script src="../js/ckeditor/ckeditor.js"></script>
-
-
-<script>
-
-    CKEDITOR.replace( 'eventPresentation' );
-
-    timer = setInterval(updateDiv,100);
-    function updateDiv(){
-        var editorText = CKEDITOR.instances.eventPresentation.getData();
-        $('#modalEventText').html(editorText);
-    }
-
-</script>
-
 
 <script>
 

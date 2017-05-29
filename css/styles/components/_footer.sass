@@ -1,0 +1,34 @@
+footer
+  background-color: $black_color
+  display: flex
+  align-items: center
+  font-family: $font_second
+
+  .footer_contact, .footer_link, .footer_copyrights
+    width: 33%
+    padding: 0 15px
+
+  .footer_contact,
+  .footer_link a .fa-facebook-square,
+  .footer_link a .fa-youtube-square,
+  .footer_copyrights
+    color: $white_color
+    transition: color 0.3s ease, transform 0.3s ease
+
+  .footer_link a
+    margin: 0 25px
+    font-size: $font_size * 5
+
+  .footer_link a,
+  .footer_copyrights a
+    &:hover, &:visited, &:focus
+      text-decoration: none
+      color: $white_color
+
+  a .fa-facebook-square:hover
+    color: #3B5998
+    transform: scale(1.1)
+
+  a .fa-youtube-square:hover
+    color: #E62117
+    transform: scale(1.1)

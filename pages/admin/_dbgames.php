@@ -13,7 +13,6 @@
       <div class="">
         <label for="search">Rechercher</label>
         <input type="text" name="search" id="search" />
-        <input type="hidden" name="new" value="true" id="action" />
         <label for="typeOfSearch">Recherche par:</label>
         <select class="typeOfSearch" name="typeOfSearch">
           <option value="jeu">Jeu</option>
@@ -33,30 +32,31 @@
     </div>
     <div class="col-lg-6 image">
       <img src="#" alt="image de jeu" width=100%>
-
     </div>
   </div>
-    <form id="gameManagementForm" action="" method="" enctype="multipart/form-data">
-      <label for="name_game">Nom</label>
-      <input type="text" name="name_game">
-      <label for="console">Console associée</label>
-      <select name="console">
-        <?php
-        $qry = "SELECT * FROM console WHERE 1 ORDER BY nom_console ASC";
-        $req = $cnx->prepare($qry);
-        $req->execute();
+    <form id="gameManagementForm" enctype="multipart/form-data">
+      <fieldset>
+        <legend id="actionLegend">Ajouter un jeu</legend>
+        <input type="hidden" name="action" value="new" />
+        <label for="name_game">Nom</label>
+        <input type="text" name="name_game"/>
+        <label for="console">Console associée</label>
+        <select name="console">
+          <?php
+          $qry = "SELECT * FROM console WHERE 1 ORDER BY nom_console ASC";
+          $req = $cnx->prepare($qry);
+          $req->execute();
+          while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+              echo "<option value='".$data['id_console']."'>".$data['nom_console']."</option>";
+          }
+          $req->closeCursor();
+           ?>
+        </select>
 
-        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value='".$data['id_console']."'>".$data['nom_console']."</option>";
-        }
-        $req->closeCursor();
-
-         ?>
-      </select>
-
-      <label for="image_game">Image</label>
-      <input type="file" name="image_game" id="inputImage" onchange="readURL(this)">
-      <input type="button" name="submit" value="Modifier">
+        <label for="image_game">Image</label>
+        <input type="file" name="image_game" id="inputImage" onchange="readURL(this)"/>
+        <input type="button" name="submit" value="Modifier"/>
+      </fieldset>
     </form>
 
   </div>

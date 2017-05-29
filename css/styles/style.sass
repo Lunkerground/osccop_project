@@ -1,0 +1,101 @@
+// -----<< Imports >>-----
+
+@import 'components/variables'
+@import 'components/header'
+@import 'components/footer'
+@import 'components/modal'
+
+@import 'pages/admin'
+@import 'pages/accueil'
+@import 'pages/model'
+
+// -----<< Global Styles >>-----
+
+// Basic Settings
+html, body
+  margin: 0
+  padding: 0
+  height: 100%
+
+// Page Background
+body
+  background-color: $grey_color
+
+// Design for content blocks
+.content_container
+  background-color: $yellow_color
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+
+// Titles Styles
+.title_container
+  padding: 10px
+  background-color: $white_color
+  border-top-left-radius: 3px
+  border-top-right-radius: 3px
+  +headings
+    margin: 0
+    font:
+      family: $font_main
+      weight: bold
+    text-shadow: 1px 1px $black_color
+
+// Text Styles
+.text_container
+  padding: 15px
+  background-color: $white_color
+  border-radius: 3px
+  overflow: hidden
+  p
+    margin: 0
+    font-size: $font_size * 0.9
+    font-family: $font_second
+
+// Media Styles
+.medias_container img
+  width: 100%
+  border-radius: 3px
+
+// Set font-color to "yellow"
+.yellow
+  color: $yellow_color !important
+  &:hover
+    color: $yellow_color !important
+
+// Set font-color to "blue"
+.blue
+  color: $blue_color
+  &:hover
+    color: $blue_color
+
+// First design for links
+.first_links
+  background-color: $blue_color
+  border-radius: 3px
+  text-align: center
+  font-family: $font_main
+  text-shadow: 1px 1px $black_color
+  transition: background-color 1s ease, transform 0.3s ease
+  &:hover
+    background-color: lighten($blue_color, 10%) !important
+    transform: scale(1.1)
+
+// Second design for links
+.second_links
+  display: block
+  width: 25vw
+  padding: 10px
+  margin: 15px auto
+  background-color: $white_color
+  border-radius: 3px
+  text-align: center
+  font-family: $font_main
+  text-shadow: 1px 1px $black_color
+  transition: transform 0.3s ease
+  &:hover
+    transform: scale(1.1)
+    text-decoration: none
+
+// Third design for links
+.third_links:hover
+  text-decoration: none

@@ -6,7 +6,10 @@ $(document).ready(function () {
   let games = []
   let idGame = []
 
-  request('') // requete pour afficher tout les jeux par défaut
+
+  CKEDITOR.replace( 'eventPresentation' );
+
+  request(''); // requete pour afficher tout les jeux par défaut
 
   // il se passe des trucs si je commence à remplir le champ de recherche de jeu...
   $('#lookingForGame').keyup(function () {
@@ -17,8 +20,11 @@ $(document).ready(function () {
 
   // Que se passe-t'il si j'appuie sur le bouton valider de la création d'événement
   $('#addEvent').click(function () {
-    $('#eventModal').modal('show')
 
+    var editorText = CKEDITOR.instances.eventPresentation.getData();
+
+    $('#modalEventText').html(editorText);
+      $('#eventModal').modal('show');
     // Je récupère toutes les données du formulaire
     let myform = document.getElementById('addEventForm')
     let formContent = new FormData(myform)
@@ -30,6 +36,7 @@ $(document).ready(function () {
     })
     // que j'ajoute aux les données du formulaire
     formContent.append('games', idGame);
+    formContent.append('eventPresentation', editorText);
 
       // je rentre toute les données précédemment acquise dans le modal pour validation
     addContentToModal(
@@ -126,7 +133,7 @@ var resultDisplay = (data, offset, limit, gameCount) => {
   // Ajout de jeu dans la selection
   $('.selectGame').click(function () {
     let gIndex = $('.game').index($(this).parents().parents())
-    let gId = jeu.js
+    let gId = $(this).parents().parents().attr('id').substr(1)
 
     // vérfie si le jeu fait déjà parti de la sélection
     let alreadySelected = false
