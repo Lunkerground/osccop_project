@@ -21,7 +21,7 @@ $(document).ready(function () {
   $('#addEvent').click(function () {
 
     var editorText = CKEDITOR.instances.eventPresentation.getData();
-    
+
     $('#modalEventText').html(editorText);
 
       $('#eventModal').modal('show');
@@ -78,7 +78,7 @@ $(document).ready(function () {
 var request = (inpVal) => {
   $.ajax({
     method: 'GET',
-    url: 'http://localhost/osccop_project/php/gamesearch.php',
+    url: '../php/gamesearch.php',
     data: {
       game: inpVal,
       typeOfSearch: $('select[name=typeOfSearch]').val()

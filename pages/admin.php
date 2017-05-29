@@ -20,37 +20,51 @@ if ($data['Membre_actif'] == 'false') {
     header('location:../index.php');
 }
 
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
   <head>
 
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OSCCOP - Administration</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/3cfbbd0083.js"></script>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../css/images/logo_osccop_short.png" />
+
+    <!-- Bootstrap - Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/convert/style.css">
+    <link rel="stylesheet" href="../css/styles/convert/style.css">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
   </head>
 
   <body>
 
     <div class="container-fluid">
+
       <div class="row">
 
-      <!-- LEFT SECTION - NAVIGATION SIDE BAR -->
-          <div class="col-sm-2 col-lg-2 accordion" style="border: 1px black solid">
-            <p>OSCCOP<br/>Espace Administration</p>
+        <!-- LEFT SECTION - NAVIGATION SIDE BAR -->
+        <div class="col-sm-2 accordion text-center">
 
-            <?php
+          <h3 class="admin_header">Menu <i class="fa fa-wrench" aria-hidden="true"></i></h3>
+
+          <?php
 
             if ($data['Super_User'] == 'true') {
-                echo '
+
+              echo '
+
               <ul>
                 <li class="toggleSubMenu"><span>Administration</span>
                   <ul class="subMenu">
@@ -79,7 +93,7 @@ if ($data['Membre_actif'] == 'false') {
               ';
             }
 
-              ?>
+          ?>
 
             <li class="toggleSubMenu"><span>Membres</span>
               <ul class="subMenu">
@@ -87,30 +101,32 @@ if ($data['Membre_actif'] == 'false') {
               </ul>
             </li>
           </ul>
-        </div>
-      <!-- RIGHT SECTION - ADMIN CONTENTS -->
+        </div> <!-- End of col-sm-2 -->
 
-      <!-- DATABASE - MEMBERS -->
+        <!-- RIGHT SECTION - ADMIN CONTENTS -->
+        <div class="col-sm-10 admin_content">
 
-        <div class="col-lg-10"
           <?php
 
             if (isset($_GET['page']) && $_GET['page'] == 'events') {
-                include('admin/_dbevent.php');
+
+              include('admin/_dbevent.php');
+
             } elseif (isset($_GET['page']) && $_GET['page'] == 'dbmembers') {
 
               // DATABASE - MEMBERS
               include('admin/_dbmembers.php');
+
             } elseif (isset($_GET['page']) && $_GET['page'] == 'dbgames') {
 
               // DATABASE - GAMES
               include('admin/_dbgames.php');
-            } elseif (isset($_GET['page']) && $_GET['page'] == 'dbconsoles') {
 
-              // DATABASE - CONSOLES
+            } elseif (isset($_GET['page']) && $_GET['page'] == 'dbconsoles') {
 
               // DATABASE - PODCASTS
               include('admin/_dbpodcasts.php');
+
             } elseif (isset($_GET['page']) && $_GET['page'] == 'dblocations') {
 
               // DATABASE - LOCATIONS
@@ -118,11 +134,18 @@ if ($data['Membre_actif'] == 'false') {
             }
 
           ?>
-        </div>
-      </div>
-    </div>
+
+        </div> <!-- End of .col-sm-10 -->
+
+      </div> <!-- End of .row -->
+
+    </div> <!-- End of .container-fluid -->
+
   </body>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap - Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   <!-- Custom JS -->
   <script type="text/javascript" src="../js/accordion.js"></script>
 
