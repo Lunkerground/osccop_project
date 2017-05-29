@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OSCCOP - Accueil</title>
 
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="css/images/logo_osccop_short.png" />
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
@@ -85,7 +86,8 @@
           </div> <!-- End of .next_events -->
 
           <!-- Football Exposition -->
-          <div class="col-xs-12 col-sm-6 expo_foot headerHeight" style="display: flex; flex-direction: column; justify-content: space-between">
+          <div class="col-xs-12 col-sm-6 expo_foot headerHeight">
+
             <div class="row">
 
               <!-- Section Title -->
@@ -94,9 +96,9 @@
               </div>
 
               <!-- Expo Text -->
-              <div class="col-xs-12" style="display:flex; align-items:center">
+              <div class="col-xs-12">
 
-                <div class="text_container" style="margin-right: 15px">
+                <div class="text_container">
                   <p class="text-justify">L’émergence ici c’est l’émulsion, c’est pas l’immersion donc le rédynamisme de l'orthodoxisation tend à porter d'avis sur ce qu'on appelle la renaissance africaine dans la sous-régionalité, mais oui.</p>
                 </div>
 
@@ -327,6 +329,7 @@
     <!-- Bootstrap - Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <!-- Custom JS - Adaptive Height -->
     <script type="text/javascript" src="js/adaptive_height.js"></script>
 
   </body>

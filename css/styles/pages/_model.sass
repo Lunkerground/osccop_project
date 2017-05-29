@@ -1,9 +1,63 @@
-.sorting_container
-  padding: 25px
-  background-color: $blue_color
-  font-family: $font_main
-  text-shadow: 1px 1px $black_color
-  form .form-group *
-    margin: 0 25px
-  form .form-control
-    width: 200px
+.feedbacks, .complements, .random
+  margin: 15px 0
+
+  .sorting_container
+    padding: 2%
+    background-color: $blue_color
+    font-family: $font_main
+    text-shadow: 1px 1px $black_color
+
+    form .form-group
+      display: flex
+      justify-content: space-around
+      align-items: center
+      width: 100%
+
+      label
+        margin: 0
+
+      .form-control
+        width: 15vw
+
+  .elements_container
+    display: flex
+    flex-wrap: wrap
+
+    a
+      margin: 3%
+      
+      .element
+        width: 13vw
+
+        .medias_container
+          height: 70%
+          img
+            height: 100%
+
+        .text_container
+          padding: 5px
+          height: 30%
+          p
+            position: relative
+            top: 50%
+            transform: translateY(-50%)
+            font-family: $font_main
+            color: $black_color
+            text-shadow: 1px 1px $black_color
+
+  .page
+    display: flex
+    justify-content: center
+    padding:
+      top: 3%
+      bottom: 5%
+
+    a
+      padding: 8px 16px
+      margin: 0 5px
+      border-radius: 3px
+      background-color: $blue_color
+      color: $white_color
+      font-family: $font_main
+      text-decoration: none
+      text-shadow: 1px 1px $black_color

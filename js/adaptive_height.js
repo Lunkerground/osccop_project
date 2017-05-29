@@ -29,3 +29,5 @@ adaptiveHeight('.headerHeight');
 adaptiveHeight('.eventHeight');
 
 adaptiveHeight('.contentHeight');
+
+adaptiveHeight('.elementHeight');

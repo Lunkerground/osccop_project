@@ -1,3 +1,5 @@
+<?php include '../php/_connexion.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,32 +7,43 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OSCCOP - Content</title>
+    <title>OSCCOP - Compte-rendus</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../css/images/logo_osccop_short.png" />
+
+    <!-- Bootstrap - Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/convert/style.css">
+    <link rel="stylesheet" href="../css/styles/convert/style.css">
 
   </head>
   <body>
 
     <header>
 
+      <img src="../css/images/logo_pedagojeux.png" alt="logo pedagojeux" class="pedagologo">
+
+      <!-- Banner -->
+      <div class="banner">
+        <img src="../css/images/banner.png" alt="Bannière" class="img-responsive">
+      </div>
+
       <!-- Navbar -->
-      <?php include 'components/_navbar_sub.php' ?>
+      <?php include 'components/_navbar_main.php' ?>
 
     </header>
 
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-xs-12 col-sm-9">
+
+        <!-- Page Content -->
+        <div class="col-xs-12 col-sm-9 feedbacks">
 
           <!-- Section Title -->
           <div class="title_container">
@@ -40,6 +53,7 @@
           <!-- Section Content -->
           <div class="content_container">
 
+            <!-- Sorting Block -->
             <div class="sorting_container">
               <form class="form-inline">
                 <div class="form-group">
@@ -65,88 +79,172 @@
               </form>
             </div> <!-- End of .sorting_container -->
 
-            <div class="elements_container" style="display: flex; flex-wrap: wrap; justify-content: space-around">
+            <!-- Section of displayed elements -->
+            <div class="elements_container">
 
-              <div class="element" style="width: 15%; margin: 25px">
-                <a href="#">
-                  <div class="medias_container">
-                    <img src="../images/test_affiche.jpg" alt="affiche" class="img-responsive">
-                  </div>
-                  <div class="text_container">
-                    <p>Voir</p>
-                  </div>
-                </a>
-              </div>
+              <?php
+
+                // SQL Request to get all about Events
+                $res_events = $cnx->prepare('SELECT * FROM evenement ORDER BY id_event DESC LIMIT 8');
+                $res_events->execute();
+
+                while ($data = $res_events->fetch(PDO::FETCH_ASSOC)) {
+
+                  echo
+
+                  '<a href="#" class="third_links">
+                    <div class="element text_container elementHeight">
+                      <div class="medias_container">
+                        <img src="../upload/' . $data['img_event'] . '" alt="affiche" class="img-responsive">
+                      </div>
+                      <div class="text_container text-center">
+                        <p>' . $data['titre_event'] . '<br/>
+                        <small>' . $data['date_event'] . '</small></p>
+                      </div>
+                    </div>
+                  </a>';
+
+                }
+
+              ?>
 
             </div> <!-- End of .elements_container -->
 
-            <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-            </ul>
+            <div class="text-center">
+              <div class="page">
+                <a href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+              </div>
+            </div>
 
           </div>
 
         </div> <!-- End of .col-sm-9 -->
 
-        <div class="hidden-xs col-sm-3">
+        <div class="hidden-xs col-sm-3 complements">
 
           <div class="row">
+
             <div class="col-sm-12">
 
+              <!-- Section Title -->
               <div class="title_container">
-                <h3>Expo Foot</h3>
+                <h3 class="text-left">Exposition Foot</h3>
               </div>
 
-              <div class="content_container">
+              <div class="content_container" style="padding:25px">
 
+                <!-- Expo Img -->
+                <div class="medias_container" style="margin-bottom:25px">
+                  <img src="../css/images/expo_foot.jpg" alt="expo foot" class="img-responsive">
+                </div>
+
+                <!-- Expo Text -->
                 <div class="text_container">
-                  <p class="text-justify">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia.</p>
+                  <p class="text-justify">L’émergence ici c’est l’émulsion, c’est pas l’immersion donc le rédynamisme de l'orthodoxisation tend à porter d'avis sur ce qu'on appelle la renaissance africaine dans la sous-régionalité, mais oui.</p>
+                  <br>
+                  <p class="text-center"><a href="" class="blue third_links">Plus d'informations</a></p>
                 </div>
-
-                <div class="medias_container">
-                  <img src="../images/expo_foot.jpg" alt="expo foot" class="img-responsive">
-                </div>
-
-                <div class="text_container">
-                  <p class="text-justify">Tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
-                </div>
-
-                <a href="#" class="second_links">Plus d'infos</a>
 
               </div>
 
-            </div> <!-- End of col-sm-12 -->
+            </div>
+
           </div>
 
           <div class="row">
-            <div class="col-sm-12">
+
+            <div class="col-sm-12 random">
 
               <div class="title_container">
-                <h3>Le Coin Random</h3>
+                <h3>Le coin Random</h3>
               </div>
 
-              <div class="content_container">
+              <div class="content_container" style="padding:25px">
 
-                <div class="medias_container">
-                  <img src="../images/dbzhd_snes.jpg" alt="" class="img-responsive">
-                </div>
+                <div class="first_random">
 
-                <div class="text_container">
-                  <p class="text-justify">Tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium.</p>
-                </div>
+                  <?php
 
-                <a href="#" class="second_links">Plus d'infos</a>
+                    $rdm = rand(1, 2);
 
-              </div>
+                    switch ($rdm) {
 
-            </div> <!-- End of .col-sm-12 -->
+                      case 1:
+
+                        $res_rndm_game = $cnx->prepare('SELECT * FROM jeu ORDER BY RAND() LIMIT 1');
+                        $res_rndm_game->execute();
+
+                        $res_count_game = $cnx->prepare('SELECT COUNT(*) FROM jeu');
+                        $res_count_game->execute();
+
+                        $nbrjeu = $res_count_game->fetch(PDO::FETCH_ASSOC);
+
+                        while ($data = $res_rndm_game->fetch(PDO::FETCH_ASSOC)) {
+
+                          echo
+
+                          '<div class="medias_container">
+                            <img src="../upload/' . $data['img_jeu'] . '" alt="" class="img-responsive">
+                          </div>
+
+                          <div class="text_container">
+                            <p class="text-justify">Voici <strong>' . $data['nom_jeu'] . '</strong>, l\'un des ' . $nbrjeu['COUNT(*)'] . ' jeux utilisés lors d\'un évènement OSCCOP.</p>
+                            <br/>
+                            <p class="text-center"><a href="#">Voir un évènement associé à ce jeu</a></p>
+                          </div>';
+
+                        };
+
+                        break;
+
+                      case 2:
+
+                        $res_rndm_console = $cnx->prepare('SELECT * FROM console ORDER BY RAND() LIMIT 1');
+                        $res_rndm_console->execute();
+
+                        $res_count_console = $cnx->prepare('SELECT COUNT(*) FROM console');
+                        $res_count_console->execute();
+
+                        $nbrconsole = $res_count_console->fetch(PDO::FETCH_ASSOC);
+
+                        while ($data = $res_rndm_console->fetch(PDO::FETCH_ASSOC)) {
+
+                          echo
+
+                          '<div class="medias_container">
+                            <img src="../upload/' . $data['img_console'] . '" alt="" class="img-responsive">
+                          </div>
+
+                          <div class="text_container">
+                            <p class="text-justify">Voici la <strong>' . $data['nom_console'] . '</strong>, l\'une des ' . $nbrconsole['COUNT(*)'] . ' consoles utilisées lors d\'un évènement OSCCOP.</p>
+                            <br/>
+                            <p class="text-center"><a href="#">Voir un évènement associé à cette console</a></p>
+                          </div>';
+
+                        };
+
+                        break;
+
+                    }
+
+                  ?>
+
+                </div> <!-- End of .first_random -->
+
+              </div> <!-- End of .content_container -->
+
+            </div>
+
           </div>
 
-        </div> <!-- End of .col-sm-3 -->
+        </div> <!-- End of .col-sm-3  -->
+
       </div>
 
     </div> <!-- End of .container-fluid -->
@@ -162,6 +260,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS - Adaptive Height -->
+    <script type="text/javascript" src="../js/adaptive_height.js"></script>
 
   </body>
 </html>
