@@ -35,14 +35,22 @@ $date = explode("-", $data2["date_event"]);
                 <label for="eventName">Nom de l"événement</label>
                 <input class="form-control input-sm " type="text" name="eventName" required>
                 <label for="eventDate">Date de l"événement</label>
-                <input class="form-control" type="date" name="eventDate" required>
+                <input class="form-control" type="date" id="eventDate" name="eventDate" required>
                 <label for="eventPoster">Affiche</label>
                 <input class="form-control" type="file" name="eventPoster" onchange="readURL(this)"  accept="image/*">
                 <label for="eventPresentation">Presentation</label>
                 <textarea class="form-control" name="eventPresentation" id="eventPresentation" rows="8"></textarea>
               </div>
 
+
             </div>
+            <script>
+            $( function() {
+              $( "#eventDate" ).datepicker({
+                dateFormat: "yy-mm-dd"
+              });
+            } );
+            </script>
           </form>
             <h4>Ajouter des jeux</h4>
             <div class="row">
