@@ -33,18 +33,19 @@ $(document).ready(function () {
     $('#GameModalConfirm #validate').click(function () {
       $('#GameModalConfirm').modal('hide')
       $.ajax({
-        url: '/osccop_project/php/gameManagement.php',
+        url: '../php/gameManagement.php',
         data: formContent,
         type: 'POST',
         contentType: false,
         processData: false,
         success: (data) => {
           let messageContent
-          if (data == 'OK') {
+          if (data === 'OK') {
             messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement ajouter à la base de donnée'
             request('')
           } else {
             messageContent = 'Une erreur est survenue<br>' + data
+            request('')
           }
           alertMessage('SUCCESS', messageContent)
         }
@@ -56,7 +57,7 @@ $(document).ready(function () {
 var request = (inpVal) => {
   $.ajax({
     method: 'GET',
-    url: '/osccop_project/php/gamesearch.php',
+    url: '../php/gamesearch.php',
     data: {
       game: inpVal,
       typeOfSearch: $('select[name=typeOfSearch]').val()
@@ -148,7 +149,7 @@ var deleteGame = (element) => {
     let gameName = gameData[blockId].nom_jeu
     $.ajax({
       method: 'GET',
-      url: '/osccop_project/php/deleteGame.php',
+      url: '../php/deleteGame.php',
       data: {
         id: gameData[blockId].id_jeu
       },
