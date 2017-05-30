@@ -46,18 +46,21 @@ if ($data['Membre_actif'] == 'false') {
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+    <!-- Jquery-ui -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 100%">
 
       <div class="row">
 
         <!-- LEFT SECTION - NAVIGATION SIDE BAR -->
         <div class="col-sm-2 accordion text-center">
 
-          <h3 class="admin_header">Menu <i class="fa fa-wrench" aria-hidden="true"></i></h3>
+          <h3 class="admin_header"><strong>Menu</strong> <i class="fa fa-wrench" aria-hidden="true"></i></h3>
 
           <?php
 
@@ -123,6 +126,11 @@ if ($data['Membre_actif'] == 'false') {
               include('admin/_dbgames.php');
 
             } elseif (isset($_GET['page']) && $_GET['page'] == 'dbconsoles') {
+
+              // DATABASE - CONSOLES
+              include 'admin/_dbconsoles.php';
+
+            } elseif (isset($_GET['page']) && $_GET['page'] == 'dbpodcast') {
 
               // DATABASE - PODCASTS
               include('admin/_dbpodcasts.php');

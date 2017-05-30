@@ -143,7 +143,7 @@ footer {
 
 .accordion {
   padding: 0;
-  height: 100vh;
+  height: 100%;
   background-color: #5e5e5e;
   font-family: roboto;
   text-shadow: 1px 1px #0F0F0F;
@@ -178,6 +178,27 @@ footer {
     font-family: roboto;
     text-shadow: 1px 1px #0F0F0F;
     color: #FFFFFF; }
+
+.title_section {
+  margin: 20px 0;
+  border-color: #8f8f8f; }
+
+.selectGame, .removeGame {
+  color: #0F0F0F; }
+  .selectGame:hover, .removeGame:hover {
+    text-decoration: none;
+    color: #0F0F0F;
+    cursor: move; }
+  .selectGame .game, .removeGame .game {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: white; }
+    .selectGame .game p, .removeGame .game p {
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
 
 .media_section,
 .feedback_section,

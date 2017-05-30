@@ -5,7 +5,7 @@
 
 .accordion
   padding: 0
-  height: 100vh
+  height: 100%
   background-color: darken($grey_color, 50%)
   font-family: $font_second
   text-shadow: 1px 1px $black_color
@@ -47,3 +47,27 @@
       font-family: $font_second
       text-shadow: 1px 1px $black_color
       color: $white_color
+
+.title_section
+  margin: 20px 0
+  border-color: lighten($black_color, 50%)
+
+.selectGame, .removeGame
+  color: $black_color
+
+  &:hover
+    text-decoration: none
+    color: $black_color
+    cursor: move
+
+  .game
+    margin: 5px 0
+    padding: 5px
+    border-radius: 3px
+    background-color: white
+
+    p
+      margin: 0
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
