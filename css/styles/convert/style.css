@@ -136,7 +136,70 @@ footer {
     color: #E62117;
     transform: scale(1.1); }
 
-/* ----------<< Navbar Style >>---------- */
+/* ----------<< Admin Style >>---------- */
+.file {
+  visibility: hidden;
+  position: absolute; }
+
+.accordion {
+  padding: 0;
+  height: 100%;
+  background-color: #5e5e5e;
+  font-family: roboto;
+  text-shadow: 1px 1px #0F0F0F;
+  color: #FFFFFF; }
+  .accordion h1, .accordion h2, .accordion h3, .accordion h4, .accordion h5, .accordion h6 {
+    margin: 0;
+    line-height: 10vh;
+    background-color: #2b2b2b; }
+  .accordion ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .accordion ul li a {
+      display: block;
+      width: 100%;
+      line-height: 10vh;
+      color: #FFFFFF;
+      text-decoration: none;
+      transition: background-color 0.3s; }
+      .accordion ul li a:hover, .accordion ul li a:visited {
+        background-color: #444444;
+        transition: background-color 0s; }
+      .accordion ul li a:focus, .accordion ul li a:active {
+        background-color: #373737; }
+
+.admin_content {
+  padding: 0; }
+  .admin_content .admin_header h1, .admin_content .admin_header h2, .admin_content .admin_header h3, .admin_content .admin_header h4, .admin_content .admin_header h5, .admin_content .admin_header h6 {
+    margin: 0;
+    line-height: 10vh;
+    background-color: #2b2b2b;
+    font-family: roboto;
+    text-shadow: 1px 1px #0F0F0F;
+    color: #FFFFFF; }
+
+.title_section {
+  margin: 20px 0;
+  border-color: #8f8f8f; }
+
+.selectGame, .removeGame {
+  color: #0F0F0F; }
+  .selectGame:hover, .removeGame:hover {
+    text-decoration: none;
+    color: #0F0F0F;
+    cursor: move; }
+  .selectGame .game, .removeGame .game {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: white; }
+    .selectGame .game p, .removeGame .game p {
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+
 .media_section,
 .feedback_section,
 .random_section {

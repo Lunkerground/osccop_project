@@ -1,4 +1,73 @@
+/* ----------<< Admin Style >>---------- */
+.file
+  visibility: hidden
+  position: absolute
 
-/* ----------<< Navbar Style >>---------- */
+.accordion
+  padding: 0
+  height: 100%
+  background-color: darken($grey_color, 50%)
+  font-family: $font_second
+  text-shadow: 1px 1px $black_color
+  color: $white_color
 
-// Navbar Body
+  +headings
+    margin: 0
+    line-height: 10vh
+    background-color: darken($grey_color, 70%)
+
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+    li a
+      display: block
+      width: 100%
+      line-height: 10vh
+      color: $white_color
+      text-decoration: none
+      transition: background-color 0.3s
+
+      &:hover, &:visited
+        background-color: darken($grey_color, 60%)
+        transition: background-color 0s
+
+      &:focus, &:active
+        background-color: darken($grey_color, 65%)
+
+.admin_content
+  padding: 0
+
+  .admin_header
+    +headings
+      margin: 0
+      line-height: 10vh
+      background-color: darken($grey_color, 70%)
+      font-family: $font_second
+      text-shadow: 1px 1px $black_color
+      color: $white_color
+
+.title_section
+  margin: 20px 0
+  border-color: lighten($black_color, 50%)
+
+.selectGame, .removeGame
+  color: $black_color
+
+  &:hover
+    text-decoration: none
+    color: $black_color
+    cursor: move
+
+  .game
+    margin: 5px 0
+    padding: 5px
+    border-radius: 3px
+    background-color: white
+
+    p
+      margin: 0
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
