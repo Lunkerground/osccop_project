@@ -1,9 +1,12 @@
-var NBGAMEMAXTODISPLAY = 13
+var NBGAMEMAXTODISPLAY = 10
 var gameData
 var queryOffset = 0
 var consoleName = ''
 var gameName = ''
 var gameImage = ''
+var currentPage = 0
+var numberOfGameFound = 0
+var nbPage = 0
 $(document).ready(function () {
   request('') // requete pour afficher tout les jeux par défaut
 
@@ -64,38 +67,27 @@ var request = (inpVal) => {
     datatype: 'json',
     success: (data) => {
       gameData = JSON.parse(data)
-      let numberOfGameFound = parseInt(gameData[0].nbRow)
+      numberOfGameFound = parseInt(gameData[0].nbRow)
       gameData.shift()
 
       // ajoute la pagination si le nombre de jeux à afficher dépasse la limite
+      nbPage = Math.ceil(numberOfGameFound / NBGAMEMAXTODISPLAY)
       if (numberOfGameFound > NBGAMEMAXTODISPLAY) {
-        $('.pagination').html('')
-        for (let p = 1; p <= Math.ceil(numberOfGameFound / NBGAMEMAXTODISPLAY); p++) {
-          $('.pagination').append("<li><a href='#' class='pagenb'>" + p + ' </a></li>')
-        }
-        $('a.pagenb').click(function (e) {
-          e.preventDefault()
-          queryOffset = $('.pagenb').index($(this)) * NBGAMEMAXTODISPLAY
-          $('#gamelist').html('')
-          resultDisplay(
-            gameData,
-            queryOffset,
-            NBGAMEMAXTODISPLAY,
-            numberOfGameFound
-          )
-        })
+        pagination(nbPage, currentPage)
       } else {
-        $('.pagination').html('')
+        pagination(nbPage, currentPage)
       }
+      // affiche les jeux correspondant à la recherche
       resultDisplay(
         gameData,
         queryOffset,
-        NBGAMEMAXTODISPLAY,
+        (NBGAMEMAXTODISPLAY - 1),
         numberOfGameFound
       )
     }
   })
 }
+// fonction pour afficher la liste des jeux de la recherche
 var resultDisplay = (data, offset, limit, gameCount) => {
   $('#gamelist').html('')
   $('#nbGame').html('')
@@ -189,5 +181,45 @@ var readURL = (input) => {
       $('.image img, #newImage').attr('src', e.target.result)
     }
     reader.readAsDataURL(input.files[0])
+  }
+}
+var pagination = (nbP, currP) => {
+  $('.pagination').html('')
+  if (nbP > 0) {
+    if (currP === nbP - 1) {
+      $('.pagination').html('<li><a class="previous" onclick="previous()"><span class="glyphicon glyphicon-triangle-left"><span></a></li>')
+    } else if (currP === 0) {
+      $('.pagination').html('<li><a class="next" onclick="next()"><span class="glyphicon glyphicon-triangle-right"><span></a></li>')
+    } else {
+      $('.pagination').html('<li><a class="previous" onclick="previous()"><span class="glyphicon glyphicon-triangle-left"><span></a></li><li><a class="next" onclick="next()"><span class="glyphicon glyphicon-triangle-right"><span></a></li>')
+    }
+  }
+}
+var next = () => {
+  $('#gamelist').html('')
+  if (currentPage < nbPage) {
+    currentPage += 1
+    pagination(nbPage, currentPage)
+    queryOffset = (currentPage) * NBGAMEMAXTODISPLAY
+    resultDisplay(
+      gameData,
+      queryOffset,
+      (NBGAMEMAXTODISPLAY - 1),
+      numberOfGameFound
+    )
+  }
+}
+var previous = () => {
+  $('#gamelist').html('')
+  if (currentPage > 0) {
+    currentPage -= 1
+    pagination(nbPage, currentPage)
+    queryOffset = (currentPage) * NBGAMEMAXTODISPLAY
+    resultDisplay(
+      gameData,
+      queryOffset,
+      (NBGAMEMAXTODISPLAY - 1),
+      numberOfGameFound
+    )
   }
 }
