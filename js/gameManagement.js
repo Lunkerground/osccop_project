@@ -42,11 +42,10 @@ $(document).ready(function () {
           let messageContent
           if (data === 'OK') {
             messageContent = 'Le jeu ' + gameName + ' sur ' + consoleName + ' a été correctement ajouter à la base de donnée'
-            request('')
           } else {
             messageContent = 'Une erreur est survenue<br>' + data
-            request('')
           }
+          request('')
           alertMessage('SUCCESS', messageContent)
         }
       })
@@ -143,6 +142,7 @@ var deleteGame = (element) => {
   let confirmContent = 'Confirmez-vous la suppression du jeu ' + gameData[blockId].nom_jeu + ' sur ' + gameData[blockId].nom_console + ' de la base de donnée?'
   addContentToModal('Suppression de jeu', confirmContent)
   $('#GameModalConfirm').modal('show')
+
   $('#GameModalConfirm #validate').click(function () {
     $('#GameModalConfirm').modal('hide')
     let consoleName = gameData[blockId].nom_console
@@ -162,9 +162,11 @@ var deleteGame = (element) => {
         } else {
           messageContent = 'Une erreur est survenue<br>' + data
         }
+        request('')
         alertMessage('SUCCESS', messageContent)
       }
     })
+    return
   })
 }
 
